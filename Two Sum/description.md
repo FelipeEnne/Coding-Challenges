@@ -18,3 +18,19 @@ Complexity Analysis
 
 * Time complexity : O(n^2). 
 * Space complexity : O(1)
+
+## Two-pass Hash Table
+
+Complexity Analysis
+
+* Time complexity : O(n). 
+* Space complexity : O(n)
+
+
+## One-pass Hash Table
+
+Complexity Analysis
+
+* Time complexity : O(1). 
+* Space complexity : O(n)
+
