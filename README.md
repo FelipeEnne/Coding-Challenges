@@ -6,3 +6,4 @@
 * Clone Graph
 * Number of 1 Bits
 * Kth Largest Element in a Stream
+* Sqrt(x)
