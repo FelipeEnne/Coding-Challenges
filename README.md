@@ -8,3 +8,5 @@
 * Kth Largest Element in a Stream
 * Sqrt(x)
 * Add Two Numbers
+* Rotate List
+* House Robber
