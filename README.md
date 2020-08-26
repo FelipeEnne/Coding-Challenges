@@ -17,3 +17,4 @@
 * Decode Ways
 * Rotate List
 * Jump Game
+* Contains Duplicate
