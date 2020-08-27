@@ -18,3 +18,4 @@
 * Rotate List
 * Jump Game
 * Contains Duplicate
+* Minimum Swaps 2
