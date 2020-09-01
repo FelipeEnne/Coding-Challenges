@@ -22,3 +22,5 @@
 * Reverse Linked List
 * Group Anagrams
 * New Year Chaos
+* Linked List Cycle
+* Integer to English Words
