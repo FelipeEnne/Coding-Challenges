@@ -27,3 +27,4 @@
 * Maximum Subarray
 * Longest Consecutive Sequence
 * Merge k Sorted Lists
+* Missing Number
