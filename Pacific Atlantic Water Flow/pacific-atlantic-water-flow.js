@@ -17,7 +17,7 @@ var pacificAtlantic = function(matrix) {
     }
 
     const backFlow = (i,j,ocean,val) => {
-        if (i < 0 || i >= m || j < 0 || j >=n || ocean[i][j]) return;
+        if (i < 0 || i >= m || j < 0 || j >= n || ocean[i][j]) return;
         if (matrix[i][j] >= val) {
             ocean[i][j] = true;
             spread(i,j,ocean);
@@ -34,8 +34,8 @@ var pacificAtlantic = function(matrix) {
     
     let canFlowToAtlantic = [];
     for (let i = 0; i < m; i++) canFlowToAtlantic.push([]), canFlowToAtlantic[i][n - 1] = true;
-    for (let i = 0; i < m; i++) canFlowToAtlantic[m - 1][i] = true;
-    for (let i = 0; i < m; i++) spread(i, n - i, canFlowToAtlantic);
+    for (let i = 0; i < n; i++) canFlowToAtlantic[m - 1][i] = true;
+    for (let i = 0; i < m; i++) spread(i, n - 1, canFlowToAtlantic);
     for (let i = 0; i < n; i++) spread(m - 1, i, canFlowToAtlantic);
     //console.log(canFlowToPacific);
     
