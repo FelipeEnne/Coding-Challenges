@@ -36,3 +36,5 @@
 * Search in Rotated Sorted Array
 * Subsets II
 * Unique Paths
+* Validate Binary Search Tree
+* Word Search
