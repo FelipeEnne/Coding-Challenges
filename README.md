@@ -39,3 +39,5 @@
 * Validate Binary Search Tree
 * Word Search
 * Kth Smallest Element in a BST
+* Maximum Depth of Binary Tree
+* Merge Intervals
