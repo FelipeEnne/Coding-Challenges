@@ -43,6 +43,6 @@
 * Subsets II
 * Sum of Two Integers
 * Two Sum
-* nique Paths
+* Unique Paths
 * Validate Binary Search Tree
 * Word Search
