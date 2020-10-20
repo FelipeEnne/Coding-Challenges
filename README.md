@@ -1,44 +1,48 @@
 # Coding-Challenges - LeetCode
 
 
-* Two Sum
-* Pow(x, n)
-* Sum of Two Integers
-* Clone Graph
-* Number of 1 Bits
-* Kth Largest Element in a Stream
-* Sqrt(x)
-* Add Two Numbers
-* Rotate List
 * 3Sum
-* Container With Most Water
-* House Robber
 * Add Two Numbers
-* Decode Ways
-* Rotate List
-* Jump Game
+* Array Manipulation
+* Clone Graph
+* Coin Change
+* Container With Most Water
 * Contains Duplicate
-* Minimum Swaps 2
-* Reverse Linked List
+* Decode Ways
+* Find Median from Data Stream
 * Group Anagrams
-* New Year Chaos
-* Linked List Cycle
+* House Robber
 * Integer to English Words
-* Maximum Subarray
+* Jump Game
+* Kth Largest Element in a Stream
+* Kth Smallest Element in a BST
+* Linked List Cycle
 * Longest Consecutive Sequence
+* Longest Substring Without Repeating Characters
+* Maximum Depth of Binary Tree
+* Maximum Subarray
+* Merge Intervals
 * Merge k Sorted Lists
+* Minimum Swaps 2
 * Missing Number
+* New Year Chaos
 * Non-overlapping Intervals
+* Number of 1 Bits
 * Number of Islands
 * Pacific Atlantic Water Flow
 * Palindromic Substrings
+* Pow(x, n)
 * Remove Nth Node From End of List
+* Reorder List
+* Reverse Bits
+* Reverse Linked List
+* Rotate List
 * Search in Rotated Sorted Array
+* Shuffle String
+* Sqrt(x)
 * Subsets II
-* Unique Paths
+* Sum of Two Integers
+* Two Sum
+* nique Paths
 * Validate Binary Search Tree
 * Word Search
-* Kth Smallest Element in a BST
-* Maximum Depth of Binary Tree
-* Merge Intervals
-* Shuffle String
