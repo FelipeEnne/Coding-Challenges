@@ -42,7 +42,11 @@
 * Sqrt(x)
 * Subsets II
 * Sum of Two Integers
+* Task Scheduler
 * Two Sum
 * Unique Paths
 * Validate Binary Search Tree
 * Word Search
+
+
+OneDrive\Área de Trabalho\Projetos\Algorithm\Coding Challenges

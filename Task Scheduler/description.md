@@ -39,3 +39,7 @@ Constraints:
 1 <= task.length <= 104
 tasks[i] is upper-case English letter.
 The integer n is in the range [0, 100].
+
+
+OneDrive\Área de Trabalho\Projetos\Algorithm\Coding Challenges\Task Scheduler
+tsc task-scheduler.ts --lib es6
