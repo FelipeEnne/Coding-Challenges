@@ -47,6 +47,10 @@
 * Unique Paths
 * Validate Binary Search Tree
 * Word Search
+* Sales by Match
+* Jumping on the Clouds
+* Counting Valleys
+
 
 
 OneDrive\Área de Trabalho\Projetos\Algorithm\Coding Challenges
