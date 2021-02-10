@@ -24,22 +24,23 @@ function readLine() {
 
 // Complete the checkMagazine function below.
 function checkMagazine(magazine, note) {
+    function checkMagazine(magazine, note) {
     const magazineObject = magazine.reduce(function(acc, cur, i) {
-        if(acc[cur]) acc[cur] += 1;
-        acc[cur] = 1;
+        if(!!acc[cur]) acc[cur] = acc[cur] + 1;
+        else  acc[cur] = 1;
         return acc;
     }, {});
-    
     
     for(let i = 0; i < note.length; i++) {
         if(!magazineObject[note[i]] || magazineObject[note[i]] <= 0) {
             return console.log('No')
         }
+        
         magazineObject[note[i]] = magazineObject[note[i]]-1
-        // console.log(magazineObject[note[i]])
     }
     
     return console.log('Yes')
+}
 }   
 
 function main() {
