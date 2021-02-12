@@ -27,6 +27,19 @@ function readLine() {
 // Complete the twoStrings function below.
 function twoStrings(s1, s2) {
 
+    const s1Array = s1.split('');
+    const s2Array = s2.split('');
+    const s1Object = s1Array.reduce((acc, cur) => {
+        if(acc[cur])  acc[cur] += 1;
+        else  acc[cur] = 1;
+        return acc
+    },{});
+    
+    for(let i = 0; i <= s2Array.length-1; i++) {
+        if(s1Object[s2Array[i]]) return 'YES';
+    };
+    
+    return 'NO';
 
 }
 
