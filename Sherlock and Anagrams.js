@@ -34,16 +34,22 @@ function sherlockAndAnagrams(s) {
     let result = 0;
     
     for(let i = 0; i <= s.length; i++) {
-        for(let j = 0; j <= i; j++) {
+        for(let j = 0; j < i; j++) {
+            const sliceIJ = s.slice(j,i)
+            if(i!== j && sliceIJ !== '') {
+                if(!!stringAnagramMap[sliceIJ]) { 
+                    stringAnagramMap[sliceIJ] += 1;
+                    result ++;
+                } else if(i!== j && !!stringAnagramMap[reverse(sliceIJ)]) {
+                    stringAnagramMap[reverse(sliceIJ)] += 1;
+                    result ++;
+                }
+                else if(i!== j){
+                    stringAnagramMap[sliceIJ] = 1;
+                }
+            }
+            
             //console.log(stringAnagramMap);
-            //console.log(s.slice(j,i))
-            if(i !== j && !!stringAnagramMap[s.slice(j,i)]) {
-                stringAnagramMap[s.slice(j,i)] += 1;
-                result ++;
-            }
-            if(i !== j && !stringAnagramMap[s.slice(j,i)]){
-                stringAnagramMap[reverse(s.slice(j,i))] = 1;
-            }
         }
         
     }
