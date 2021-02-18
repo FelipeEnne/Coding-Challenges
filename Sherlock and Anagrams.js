@@ -24,9 +24,8 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function reverse(s){
-    return s.split("").reverse().join("");
-}
+const sortString = (string)  => string.split('').sort().join('');
+
 // Complete the sherlockAndAnagrams function below.
 function sherlockAndAnagrams(s) {
    
@@ -35,26 +34,22 @@ function sherlockAndAnagrams(s) {
     
     for(let i = 0; i <= s.length; i++) {
         for(let j = 0; j < i; j++) {
-            const sliceIJ = s.slice(j,i)
+            const sliceIJ = sortString(s.slice(j,i));
             if(i!== j && sliceIJ !== '') {
                 if(!!stringAnagramMap[sliceIJ]) { 
                     stringAnagramMap[sliceIJ] += 1;
-                    result ++;
-                } else if(i!== j && !!stringAnagramMap[reverse(sliceIJ)]) {
-                    stringAnagramMap[reverse(sliceIJ)] += 1;
-                    result ++;
-                }
-                else if(i!== j){
+                    result += stringAnagramMap[sliceIJ] - 1;
+                    //console.log(result)
+                } else if(i!== j){
                     stringAnagramMap[sliceIJ] = 1;
                 }
             }
             
             //console.log(stringAnagramMap);
         }
-        
     }
     
-    //console.log(stringAnagramMap);
+    // console.log(stringAnagramMap);
     return result;
 }
 
