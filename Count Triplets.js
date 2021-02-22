@@ -24,8 +24,32 @@ function readLine() {
 
 // Complete the countTriplets function below.
 function countTriplets(arr, r) {
-
-
+    
+    const arrR = [... new Set(arr)];
+    const objR = {};
+    let moreThenTwo  = [];
+    let result = (arrR.length - 3) + 1 ;
+    // console.log({arr, r, result}) 
+    for(let i = 0; i <= arr.length - 1 ; i++ ){
+        if(objR[arr[i]]){
+            moreThenTwo.push(arr[i]);
+            result ++;
+            objR[arr[i]] += 1
+        }
+        else objR[arr[i]] = 1;
+    }
+    // console.log({arr, r, result})
+    
+    for(let i = 0; i <= moreThenTwo.length - 1 ; i++ ){
+        const index = arrR.findIndex(e => e === moreThenTwo[i])
+        // console.log({index, a: index > 1, b: index + 2 < arrR.length})
+        if(index > 1) result ++;
+        if (index + 2 < arrR.length) result ++;
+    }
+    
+    
+    // console.log({arrR, objR, result, moreThenTwo})
+    return result;
 }
 
 function main() {
