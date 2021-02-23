@@ -39,12 +39,15 @@ function countTriplets(arr, r) {
         else objR[arr[i]] = 1;
     }
     // console.log({arr, r, result})
-    
+    let index = arrR.findIndex(e => e === moreThenTwo[0])
     for(let i = 0; i <= moreThenTwo.length - 1 ; i++ ){
-        const index = arrR.findIndex(e => e === moreThenTwo[i])
-        // console.log({index, a: index > 1, b: index + 2 < arrR.length})
-        if(index > 1) result ++;
-        if (index + 2 < arrR.length) result ++;
+        
+        // console.log({index, a: index-1, b: arr.length - index - 3})
+        
+        if(index > 1) result += index-1;
+        if (index + 3 < arr.length) result += arr.length - index - 3;
+        
+        index++;
     }
     
     
