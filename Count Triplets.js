@@ -24,47 +24,23 @@ function readLine() {
 
 // Complete the countTriplets function below.
 function countTriplets(arr, r) {
-    arr.sort((a, b) => a - b )
-    const arrWithoutRepetition = [... new Set(arr)]
-    const arrIsProgression = arrWithoutRepetition.map((e,i) => e === Math.pow(r,i));
-    const arrClean  = arrWithoutRepetition
-    .filter((e,i) =>  arrIsProgression[i])
-    const objA = {};
-    const objB = {};
-    let moreThenTwo  = [];
-    let result = (arrClean.length - 2);
-    // console.log({arr, r, result})
-    for(let i = 0; i <= arrClean.length - 1 ; i++ ){
-        objA[arrClean[i]] = 1;
-    }
-    
-    for(let i = 0; i <= arr.length - 1 ; i++ ){
-        if(objA[arr[i]]){
-            if(objB[arr[i]]) {
-                moreThenTwo.push(arr[i]);
-                result ++;
-                objB[arr[i]] += 1;
-            }
-            else objB[arr[i]] = 1;
+    const objR = {};
+    const objL = {};
+    let result = 0;
+
+    arr.forEach(a => objR[a] = objR[a] ? objR[a] + 1 : 1);
+
+    for(let i = 0 ; i < arr.length; i++){
+        const curr = arr[i];
+        objR[curr] -= 1;
+        
+        if(objR[curr*r] && objL[curr/r] && curr%r === 0) {
+            result += objR[curr*r] * objL[curr/r];
         }
-    }
-    
-    console.log({arr, r, result, arrIsProgression})
-    let index = arrClean.findIndex(e => e === moreThenTwo[0])
- 
-    
-    for(let i = 0; i <= moreThenTwo.length - 1 ; i++ ){
         
-        // console.log({index, a: index-1, b: arr.length - index - 3})
-        
-        if(index > 1) result += index-1;
-        if (index + 3 < arr.length) result += arr.length - index - 3;
-        
-        index++;
-    }
-    
-    
-    console.log({arrClean, objB, result, moreThenTwo})
+        objL[curr] = objL[curr] ? objL[curr] += 1 : 1;
+     }
+
     return result;
 }
 
