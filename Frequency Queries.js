@@ -24,8 +24,41 @@ function readLine() {
 
 // Complete the freqQuery function below.
 function freqQuery(queries) {
+    const result = [];
+    const object = {};
 
-
+    queries.forEach(e => {
+        if(e[0] === 1) {
+            if(!!object[e[1]]) {
+                object[e[1]] += 1;
+            } else {
+                object[e[1]] = 1;
+            }
+        }
+        if(e[0] === 2) {
+            if(!!object[e[1]]) {
+                object[e[1]] -= 1;
+            } else {
+                object[e[1]] = 0;
+            }
+        }
+        if(e[0] === 3) {
+            let isTrue = false;
+            const objectValues = Object.values(object);
+            for(let i = 0; i < objectValues.length ; i++ ) {
+               if(i === e[1]) {
+                    result.push(1);
+                    isTrue = true;
+                    break;
+               }
+            }
+            if(!isTrue) result.push(0);
+        }
+        
+    })
+    
+    // console.log(object);
+    return result
 }
 
 function main() {
