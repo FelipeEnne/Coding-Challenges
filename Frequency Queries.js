@@ -25,7 +25,7 @@ function readLine() {
 // Complete the freqQuery function below.
 function freqQuery(queries) {
     const result = [];
-    const object = {};
+    let object = {};
 
     queries.forEach(e => {
         if(e[0] === 1) {
@@ -44,15 +44,17 @@ function freqQuery(queries) {
         }
         if(e[0] === 3) {
             let isTrue = false;
-            const objectValues = Object.values(object);
+            const objectValues = [...new Set(Object.values(object))];
+            // console.log(objectValues);
             for(let i = 0; i < objectValues.length ; i++ ) {
-               if(i === e[1]) {
+               if(objectValues[i] === e[1]) {
                     result.push(1);
                     isTrue = true;
                     break;
                }
             }
             if(!isTrue) result.push(0);
+            object = {};
         }
         
     })
