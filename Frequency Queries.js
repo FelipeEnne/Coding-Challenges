@@ -26,40 +26,51 @@ function readLine() {
 function freqQuery(queries) {
     const result = [];
     let object = {};
+    let objectValue = {};
 
     queries.forEach(e => {
         if(e[0] === 1) {
             if(!!object[e[1]]) {
+                objectValue[object[e[1]]] -= 1;
                 object[e[1]] += 1;
+
+                if(objectValue[object[e[1]]]) {
+                    objectValue[object[e[1]]] += 1;
+                } else {
+                    objectValue[object[e[1]]] = 1
+                }
             } else {
                 object[e[1]] = 1;
+                if(objectValue[1]) {
+                    objectValue[1] += 1;
+                } else {
+                    objectValue[1] = 1
+                }
             }
         }
         if(e[0] === 2) {
             if(!!object[e[1]]) {
+                objectValue[object[e[1]]] -= 1;
                 object[e[1]] -= 1;
+                
+                if(objectValue[object[e[1]]]) {
+                    objectValue[object[e[1]]] += 1;
+                } else {
+                    objectValue[object[e[1]]] = 1
+                }
             } else {
                 object[e[1]] = 0;
             }
         }
         if(e[0] === 3) {
-            let isTrue = false;
-            const objectValues = [...new Set(Object.values(object))];
-            // console.log(objectValues);
-            for(let i = 0; i < objectValues.length ; i++ ) {
-               if(objectValues[i] === e[1]) {
-                    result.push(1);
-                    isTrue = true;
-                    break;
-               }
-            }
-            if(!isTrue) result.push(0);
-            object = {};
+            if(objectValue[e[1]]) result.push(1);
+            else result.push(0);
         }
         
     })
     
-    // console.log(object);
+    //console.log(object);
+    //console.log(objectValue);
     return result
 }
 
