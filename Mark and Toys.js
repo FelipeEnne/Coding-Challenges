@@ -26,8 +26,19 @@ function readLine() {
 
 // Complete the maximumToys function below.
 function maximumToys(prices, k) {
-
-
+    const cleanPrices = prices.filter(p => p < k).sort((a, b) => a - b);
+    let sum = 0;
+    let result = 0;
+    
+    cleanPrices.forEach(elem => {
+        sum += elem;
+        if(sum < k) {
+            result ++;
+        }
+    })
+    
+    
+    return result;
 }
 
 function main() {
