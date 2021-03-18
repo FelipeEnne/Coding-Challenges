@@ -24,26 +24,14 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-const insetSortedRemove = (arr, add, remove) => {    
-    let removed = false;
-    let added = false;
 
-    for(let i = 0; arr.length > i; i++ ) {
-        if(arr[i] === remove && !removed) {
-            removed = true;
-            arr.splice(i,1)
-        }
-        if(arr[i] >= add  && !added) {
-            added = true;
-            arr.splice(i,0, add)
-        }
+const sortedIndex = (arr, low, high, key) => {    
+    while (low < high) {
+        let mid =(low + high) / 2;
+        if (arr[mid] < key) low = mid + 1;
+        else high = mid;
     }
-    
-    if(!added) arr.push(add)
-
-    // console.log(arr)
-    
-    return arr; 
+    return low;
 } 
 
 // Complete the activityNotifications function below.
@@ -61,9 +49,7 @@ function activityNotifications(expenditure, d) {
         }
         
         if(expenditure[d+i] >= median*2) result++;
-        // console.log({1: expenditureSliceSort, remove: expenditure[i], add: expenditure[d+i+1]})
-        insetSortedRemove(expenditureSliceSort, expenditure[d+i+1], expenditure[i]);
-        // console.log({expenditureSliceSort})
+        
     }
     
     return result;
