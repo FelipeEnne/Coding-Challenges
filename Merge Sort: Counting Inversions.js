@@ -32,14 +32,12 @@ function countInversions(arr) {
         let m1 = i;
         let m2 = i+1;
         while(arr[m1] > arr[m2]) {
-           //console.log({q:1,arr, arr1: arr[m1], arr2: arr[m1+1], m1,m2})
            let temp = arr[m1];
            arr[m1] = arr[m2];
            arr[m2] = temp;
            result ++;
            m1 --;
            m2 --;
-           //console.log({q:2,arr})
        }
    }
     return result;
