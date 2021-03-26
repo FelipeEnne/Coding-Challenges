@@ -28,16 +28,15 @@ function readLine() {
 function countInversions(arr) {
    let result = 0;
    
+   //let arrSorted = arr.sort((a,b) => a - b);
+   
    for(let i = 0; arr.length-1 > i; i++) {
-        let m1 = i;
+
         let m2 = i+1;
-        while(arr[m1] > arr[m2]) {
-           let temp = arr[m1];
-           arr[m1] = arr[m2];
-           arr[m2] = temp;
+        //console.log({arr: arr[i], arr1:arr[m2], t: arr[i] > arr[m2], a: arr})
+        while(arr[i] > arr[m2]) {
            result ++;
-           m1 --;
-           m2 --;
+           m2 ++;
        }
    }
     return result;
