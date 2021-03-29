@@ -26,20 +26,40 @@ function readLine() {
 
 // Complete the countInversions function below.
 function countInversions(arr) {
-   let result = 0;
-   
-   //let arrSorted = arr.sort((a,b) => a - b);
-   
-   for(let i = 0; arr.length-1 > i; i++) {
+    let count = 0;
+    
+    function swap(arr1, arr2) {
+        let i = 0;
+        let j = 0;
+        let mergedArr = [];
+        let remainder;
+        while (i !== arr1.length && j !== arr2.length) {
+            if (arr1[i] < arr2[j] || arr1[i] === arr2[j]) {
+                mergedArr.push(arr1[i]);
+                i++;
+            } else {
+                mergedArr.push(arr2[j]);
+                count += (arr1.length - i);
+                j++;
+            }
+        }
+        remainder = i >= j ? arr2.slice(j) : arr1.slice(i);
+        return mergedArr.concat(remainder);
+    }
 
-        let m2 = i+1;
-        //console.log({arr: arr[i], arr1:arr[m2], t: arr[i] > arr[m2], a: arr})
-        while(arr[i] > arr[m2]) {
-           result ++;
-           m2 ++;
-       }
-   }
-    return result;
+    function mergeSort(arr) {
+        if (arr.length <= 1) return arr;
+        let middle = Math.floor(arr.length / 2);
+
+        let left = mergeSort(arr.slice(0, middle))
+        let right = mergeSort(arr.slice(middle, arr.length))
+
+        return swap(left, right);
+    }
+    
+    mergeSort(arr);
+    
+    return count;
 }
 
 function main() {
