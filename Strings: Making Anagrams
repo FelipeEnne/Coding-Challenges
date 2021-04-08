@@ -30,13 +30,7 @@ function makeAnagram(a, b) {
     const aS = a.split('')
     const bS  = b.split('')
     
-    // const objA = {}
     const objB = {}
-    // const obj = {}
-    
-    // for(let i = 0; a.length > i; i++){
-    //     objA[aS[i]] = 1;
-    // }
     
     for(let i = 0; b.length > i; i++){
         if(objB[bS[i]]) {
@@ -46,16 +40,6 @@ function makeAnagram(a, b) {
         }
     }
     
-    // console.log({objA, objB})
-
-    // for(let i = 0; a.length > i; i++){
-    //     if(obj[aS[i]]) {
-    //         obj[aS[i]] += 1;
-    //     } else {
-    //         obj[aS[i]] = 1;
-    //     }
-    // }
-    
     for(let i = 0; a.length > i; i++){
         if(objB[aS[i]] && objB[aS[i]] > 0) {
             objB[aS[i]] -= 1;
@@ -63,16 +47,6 @@ function makeAnagram(a, b) {
         } 
     }
     
-    // const objValues = Object.values(obj);
-    
-    // for(let i = 0; objValues.length > i; i++){
-    //     if(objValues[i] === 1) {
-    //         result += 1;
-    //     } 
-    // }
-    
-    // console.log(obj)
-    console.log({al:a.length,bl: b.length, result})
     return a.length+b.length-result*2;
 }
 
