@@ -27,7 +27,52 @@ function readLine() {
 // Complete the isValid function below.
 function isValid(s) {
 
+    const sObj ={};
+    const countObj ={};
+    
+    for(let i = 0; s.length > i; i++ ) {
+        if(sObj[s[i]]) {
+            countObj[`${sObj[s[i]]}`] -= 1;
+            sObj[s[i]] += 1;
+            
+            if(countObj[`${sObj[s[i]]}`]) {
+                countObj[`${sObj[s[i]]}`] += 1;
+            } else {
+                countObj[`${sObj[s[i]]}`] = 1;
+            }
 
+        } else {
+            sObj[s[i]] = 1;
+            if(countObj['1']) {
+                countObj['1'] += 1;
+            } else {
+                countObj['1'] = 1;
+            }
+        }
+    }
+    
+    const values = Object.values(countObj)
+    let countOne = 0;
+    let count = 0;
+        
+    for(let i = 0; values.length > i; i++ ) {
+        
+        if(values[i] === 1) {
+            countOne ++;
+        }
+        
+        if(values[i] > 1) {
+            count ++;
+        }
+       
+    //    console.log(count)
+       if(countOne >= 2 || count >= 2){
+           return 'NO'
+       }
+    }
+    console.log({countObj, sObj})
+
+    return 'YES'
 }
 
 function main() {
