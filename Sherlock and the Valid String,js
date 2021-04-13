@@ -51,11 +51,17 @@ function isValid(s) {
         }
     }
     
-    const values = Object.values(countObj)
+    const values = Object.values(countObj);
+    const keys = Object.keys(countObj);
     let countOne = 0;
     let count = 0;
+    let keysValues = [];
         
     for(let i = 0; values.length > i; i++ ) {
+                
+        if(values[i] > 0) {
+            keysValues.push(parseInt(keys[i]))
+        }
         
         if(values[i] === 1) {
             countOne ++;
@@ -70,7 +76,15 @@ function isValid(s) {
            return 'NO'
        }
     }
-    console.log({countObj, sObj})
+    
+    for(let i = 0; keysValues.length-1 > i; i++ ) {
+                
+        if(Math.abs(keysValues[i] - keysValues[i+1]) > 1) {
+            return 'NO'
+        }
+    }
+    
+    // console.log({countObj, sObj, keysValues})
 
     return 'YES'
 }
