@@ -77,9 +77,11 @@ function isValid(s) {
        }
     }
     
+    // console.log({countObj, sObj, keysValues})
+    // const countKeys = 0;
     for(let i = 0; keysValues.length-1 > i; i++ ) {
                 
-        if(Math.abs(keysValues[i] - keysValues[i+1]) > 1) {
+        if(Math.abs(keysValues[i] - keysValues[i+1]) > 1 && keysValues[i] > 1) {
             return 'NO'
         }
     }
