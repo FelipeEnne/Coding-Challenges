@@ -40,7 +40,6 @@ function isValid(s) {
             } else {
                 countObj[`${sObj[s[i]]}`] = 1;
             }
-
         } else {
             sObj[s[i]] = 1;
             if(countObj['1']) {
@@ -51,44 +50,23 @@ function isValid(s) {
         }
     }
     
-    const values = Object.values(countObj);
-    const keys = Object.keys(countObj);
-    let countOne = 0;
-    let count = 0;
-    let keysValues = [];
-        
-    for(let i = 0; values.length > i; i++ ) {
-                
-        if(values[i] > 0) {
-            keysValues.push(parseInt(keys[i]))
-        }
-        
-        if(values[i] === 1) {
-            countOne ++;
-        }
-        
-        if(values[i] > 1) {
-            count ++;
-        }
-       
-    //    console.log(count)
-       if(countOne >= 2 || count >= 2){
-           return 'NO'
-       }
-    }
+    const values = Object.values(sObj);
+    const keys = Object.keys(sObj);
+    let setValues = new Set(values)
+    setValues= [...setValues]
     
-    // console.log({countObj, sObj, keysValues})
-    // const countKeys = 0;
-    for(let i = 0; keysValues.length-1 > i; i++ ) {
-                
-        if(Math.abs(keysValues[i] - keysValues[i+1]) > 1 && keysValues[i] > 1) {
-            return 'NO'
-        }
+    if(keys.length === 1) return 'YES';
+    if(setValues.length === 2) {
+        const key1 = setValues[0];
+        const key2 = setValues[1];
+        if (sObj[key1]==1 && (key1-1==key2 || key1-1==0))
+            return 'YES';
+        else if (sObj[key2]==1 && (key2-1==key1 || key2-1==0))
+             return 'YES';
     }
+    console.log({values,keys,setValues})
+    return 'NO';
     
-    // console.log({countObj, sObj, keysValues})
-
-    return 'YES'
 }
 
 function main() {
