@@ -26,47 +26,41 @@ function readLine() {
 
 // Complete the isValid function below.
 function isValid(s) {
+    let isValid = 'YES';
 
-    const sObj ={};
-    const countObj ={};
-    
-    for(let i = 0; s.length > i; i++ ) {
-        if(sObj[s[i]]) {
-            countObj[`${sObj[s[i]]}`] -= 1;
-            sObj[s[i]] += 1;
-            
-            if(countObj[`${sObj[s[i]]}`]) {
-                countObj[`${sObj[s[i]]}`] += 1;
-            } else {
-                countObj[`${sObj[s[i]]}`] = 1;
-            }
-        } else {
-            sObj[s[i]] = 1;
-            if(countObj['1']) {
-                countObj['1'] += 1;
-            } else {
-                countObj['1'] = 1;
-            }
-        }
+    const cache = {};
+
+    for (let i = 0; i < s.length; i++) {
+        cache[s[i]] = (cache[s[i]]||0) + 1;
     }
-    
-    const values = Object.values(sObj);
-    const keys = Object.keys(sObj);
-    let setValues = new Set(values)
-    setValues= [...setValues]
-    
-    if(keys.length === 1) return 'YES';
-    if(setValues.length === 2) {
-        const key1 = setValues[0];
-        const key2 = setValues[1];
-        if (sObj[key1]==1 && (key1-1==key2 || key1-1==0))
-            return 'YES';
-        else if (sObj[key2]==1 && (key2-1==key1 || key2-1==0))
-             return 'YES';
+
+    const frequency = Object.entries(cache).reduce((acc, curVal) => {
+        const [char, freq] = curVal;
+        if (!acc[freq]) acc[freq] = 0;
+        acc[freq]++;
+        return acc;
+    }, {});
+
+    const freqEntries = Object.entries(frequency);
+
+    if (freqEntries.length > 2) return 'NO';
+    if (freqEntries.length <= 1) return isValid;
+
+
+    let minFreq = Math.min(+freqEntries[0][0], +freqEntries[1][0]);
+    let maxFreq = Math.max(+freqEntries[0][0], +freqEntries[1][0]);
+
+    if (minFreq === maxFreq - 1 && frequency[maxFreq] === 1) return 'YES';
+
+    if (frequency[minFreq] > frequency[maxFreq]) {
+        minFreq = maxFreq;
     }
-    console.log({values,keys,setValues})
-    return 'NO';
-    
+
+    console.log(frequency, minFreq);
+    if (+minFreq > 2) isValid = 'NO';
+    if (frequency[minFreq] > 1) isValid = 'NO' 
+
+    return isValid;
 }
 
 function main() {
