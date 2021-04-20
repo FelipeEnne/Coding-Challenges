@@ -26,7 +26,6 @@ function readLine() {
 
 // Complete the isValid function below.
 function isValid(s) {
-    let isValid = 'YES';
 
     const cache = {};
 
@@ -40,11 +39,11 @@ function isValid(s) {
         acc[freq]++;
         return acc;
     }, {});
-
+    
     const freqEntries = Object.entries(frequency);
 
     if (freqEntries.length > 2) return 'NO';
-    if (freqEntries.length <= 1) return isValid;
+    if (freqEntries.length <= 1) return 'YES';
 
 
     let minFreq = Math.min(+freqEntries[0][0], +freqEntries[1][0]);
@@ -55,12 +54,11 @@ function isValid(s) {
     if (frequency[minFreq] > frequency[maxFreq]) {
         minFreq = maxFreq;
     }
+    
+    if (+minFreq > 2) return 'NO';
+    if (frequency[minFreq] > 1) return 'NO';
 
-    console.log(frequency, minFreq);
-    if (+minFreq > 2) isValid = 'NO';
-    if (frequency[minFreq] > 1) isValid = 'NO' 
-
-    return isValid;
+    return 'YES';
 }
 
 function main() {
