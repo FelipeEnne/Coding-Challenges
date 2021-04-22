@@ -26,7 +26,17 @@ function readLine() {
 
 // Complete the alternatingCharacters function below.
 function alternatingCharacters(s) {
-
+    
+    let countDelete = 0;
+    
+    let letter = s[0];
+    
+    for(let i = 1; s.length > i; i++) {
+        if(letter == s[i]) countDelete++;
+        else letter = s[i];
+    }
+    
+    return countDelete;
 }
 
 function main() {
