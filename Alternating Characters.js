@@ -12,7 +12,7 @@ process.stdin.on('data', inputStdin => {
     inputString += inputStdin;
 });
 
-process.stdin.on('end', _ => {
+process.stdin.on('end', function() {
     inputString = inputString.replace(/\s*$/, '')
         .split('\n')
         .map(str => str.replace(/\s*$/, ''));
@@ -24,33 +24,22 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-// Complete the alternatingCharacters function below.
-function alternatingCharacters(s) {
-    
-    let countDelete = 0;
-    
-    let letter = s[0];
-    
-    for(let i = 1; s.length > i; i++) {
-        if(letter == s[i]) countDelete++;
-        else letter = s[i];
-    }
-    
-    return countDelete;
+// Complete the substrCount function below.
+function substrCount(n, s) {
+
+
 }
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
-    const q = parseInt(readLine(), 10);
+    const n = parseInt(readLine(), 10);
 
-    for (let qItr = 0; qItr < q; qItr++) {
-        const s = readLine();
+    const s = readLine();
 
-        let result = alternatingCharacters(s);
+    const result = substrCount(n, s);
 
-        ws.write(result + "\n");
-    }
+    ws.write(result + '\n');
 
     ws.end();
 }
