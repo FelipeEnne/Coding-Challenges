@@ -24,32 +24,21 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-const sortString = (string)  => string.split('').sort().join('');
-
 // Complete the substrCount function below.
 function substrCount(n, s) {
 
     let stringAnagramMap = {};
-    let result = 0;
+    let result = s.length;
     
-    for(let i = 0; i <= s.length; i++) {
+    for(let i = 0; i < s.length; i++) {
+        if(stringAnagramMap[s[i]])  stringAnagramMap[s[i]] += 1;
+        else stringAnagramMap[s[i]] = 1;
         for(let j = 0; j < i; j++) {
-            const sliceIJ = sortString(s.slice(j,i));
-            if(i!== j && sliceIJ !== '') {
-                if(!!stringAnagramMap[sliceIJ]) { 
-                    stringAnagramMap[sliceIJ] += 1;
-                    result += stringAnagramMap[sliceIJ] - 1;
-                    //console.log(result)
-                } else if(i!== j){
-                    stringAnagramMap[sliceIJ] = 1;
-                }
-            }
-            
-            //console.log(stringAnagramMap);
+            console.log(s[j]);
         }
     }
     
-    // console.log(stringAnagramMap);
+    console.log(stringAnagramMap);
     return result;
 
 }
