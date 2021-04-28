@@ -28,17 +28,43 @@ function readLine() {
 function substrCount(n, s) {
 
     let stringAnagramMap = {};
-    let result = s.length;
+    let result = 0;
     
-    for(let i = 0; i < s.length; i++) {
-        if(stringAnagramMap[s[i]])  stringAnagramMap[s[i]] += 1;
-        else stringAnagramMap[s[i]] = 1;
-        for(let j = 0; j < i; j++) {
-            console.log(s[j]);
+    for(let i = 0; i <= s.length; i++) {
+        for(let j = i; j+1 > 0; j--) {
+            if(i !== j) {
+                if(stringAnagramMap[s.substring(j,i)])  
+                    stringAnagramMap[s.substring(j,i)] += 1;
+                else stringAnagramMap[s.substring(j,i)] = 1;
+            }
         }
     }
     
-    console.log(stringAnagramMap);
+    const keysFromString = Object.keys(stringAnagramMap);
+    
+    for(let i = 0; i < keysFromString.length; i++) {
+        if(keysFromString[i].length === 1)
+            result += stringAnagramMap[keysFromString[i]];
+        else {
+            if(keysFromString[i].length % 2 === 0) {
+                const keysSubstringA = keysFromString[i].substring(0,keysFromString[i].length/2);
+                const keysSubstringB = keysFromString[i].substring(keysFromString[i].length/2,keysFromString[i].length).split("").reverse().join("");
+                if(keysSubstringA == keysSubstringB)
+                    result += stringAnagramMap[keysFromString[i]];
+             
+            } else {
+
+                const keysSubstringA = keysFromString[i].substring(0,(keysFromString[i].length-1)/2);
+                const keysSubstringB = keysFromString[i].substring((keysFromString[i].length+1)/2,keysFromString[i].length).split("").reverse().join("");
+                // console.log({keysSubstringA, keysSubstringB})
+                if(keysSubstringA == keysSubstringB)
+                    result += stringAnagramMap[keysFromString[i]];
+                    
+            }
+        }
+    }
+    // console.log(Object.keys(stringAnagramMap));
+    // console.log(stringAnagramMap);
     return result;
 
 }
