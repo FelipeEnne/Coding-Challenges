@@ -27,45 +27,24 @@ function readLine() {
 // Complete the substrCount function below.
 function substrCount(n, s) {
 
-    let stringAnagramMap = {};
-    let result = 0;
-    
-    for(let i = 0; i <= s.length; i++) {
-        for(let j = i; j+1 > 0; j--) {
-            if(i !== j) {
-                if(stringAnagramMap[s.substring(j,i)])  
-                    stringAnagramMap[s.substring(j,i)] += 1;
-                else stringAnagramMap[s.substring(j,i)] = 1;
-            }
-        }
-    }
-    
-    const keysFromString = Object.keys(stringAnagramMap);
-    
-    for(let i = 0; i < keysFromString.length; i++) {
-        if(keysFromString[i].length === 1)
-            result += stringAnagramMap[keysFromString[i]];
-        else {
-            if(keysFromString[i].length % 2 === 0) {
-                const keysSubstringA = keysFromString[i].substring(0,keysFromString[i].length/2);
-                const keysSubstringB = keysFromString[i].substring(keysFromString[i].length/2,keysFromString[i].length).split("").reverse().join("");
-                if(keysSubstringA == keysSubstringB)
-                    result += stringAnagramMap[keysFromString[i]];
-             
-            } else {
+    let count = n;
+    for (let i = 0; i < s.length; i++) {
+        let nextIndex = i;
+        while (s[i] === s[nextIndex + 1]) nextIndex++;
 
-                const keysSubstringA = keysFromString[i].substring(0,(keysFromString[i].length-1)/2);
-                const keysSubstringB = keysFromString[i].substring((keysFromString[i].length+1)/2,keysFromString[i].length).split("").reverse().join("");
-                // console.log({keysSubstringA, keysSubstringB})
-                if(keysSubstringA == keysSubstringB)
-                    result += stringAnagramMap[keysFromString[i]];
-                    
+        if (i !== nextIndex) {
+            const length = nextIndex - i;
+            count = count + (length * (length + 1)) / 2;
+            i = nextIndex;
+        } else {
+            let step = 1;
+            while (s[i + step] === s[i - step] && s[i + step] === s[i + 1]) {
+                step++;
+                count++;
             }
         }
     }
-    // console.log(Object.keys(stringAnagramMap));
-    // console.log(stringAnagramMap);
-    return result;
+    return count;
 
 }
 
