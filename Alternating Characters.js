@@ -26,26 +26,34 @@ function readLine() {
 
 // Complete the substrCount function below.
 function substrCount(n, s) {
-
-    let count = n;
+    // console.log({n,s})
+    let result = n;
+    
     for (let i = 0; i < s.length; i++) {
         let nextIndex = i;
+        
         while (s[i] === s[nextIndex + 1]) nextIndex++;
 
         if (i !== nextIndex) {
             const length = nextIndex - i;
-            count = count + (length * (length + 1)) / 2;
+            result = result + (length * (length + 1)) / 2;
             i = nextIndex;
+            // console.log({length, result, nextIndex})
         } else {
             let step = 1;
+            // console.log({
+            //     s1: s[i + step] === s[i - step], 
+            //     s2: s[i + step] === s[i + 1]
+            // })
             while (s[i + step] === s[i - step] && s[i + step] === s[i + 1]) {
                 step++;
-                count++;
+                result++;
             }
+            // console.log({step, result})
         }
     }
-    return count;
-
+    
+    return result;
 }
 
 function main() {
