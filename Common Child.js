@@ -34,23 +34,17 @@ function readLine() {
 function commonChild(s1, s2) {
     // Write your code here
     let result = 0;
-    const s1Map = {};
     
     for(let i = 0; s1.length > i; i ++) {
-        if(s1Map[s1[i]]) {
-            s1Map[s1[i]] += 1;
-        } else {
-            s1Map[s1[i]] = 1;
+       for(let j = 0;; s2.length > j; j ++) {
+           if(s1[i] ===s2[j]) {
+               result ++;
+               break;
+           }
         }
     }
     
-    for(let i = 0; s2.length > i; i ++) {
-        console.log({s1: s1Map[s2[i]], s2: s1Map[s2[i]] > 0})
-        if(s1Map[s2[i]] && s1Map[s2[i]] > 0) {
-            result ++;
-            s1Map[s1[i]] -= 1;
-        }
-    }
+    
     
     return result;
 }
