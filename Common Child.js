@@ -22,31 +22,16 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-/*
- * Complete the 'commonChild' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts following parameters:
- *  1. STRING s1
- *  2. STRING s2
- */
-
 function commonChild(s1, s2) {
-    // Write your code here
-    let result = 0;
-    
-    for(let i = 0; s1.length > i; i ++) {
-       for(let j = 0;; s2.length > j; j ++) {
-           if(s1[i] ===s2[j]) {
-               result ++;
-               break;
-           }
-        }
-    }
-    
-    
-    
-    return result;
+    let arr = [Array(s2.length + 1).fill(0)];
+    [...s1].forEach((v1, i) => {
+        arr[i + 1] = [0];
+        [...s2].forEach((v2, j) => {
+            arr[i + 1][j + 1] = v1 === v2 ?
+                arr[i][j] + 1 : Math.max(arr[i + 1][j], arr[i][j + 1]);
+        });
+    });
+    return arr[s2.length][s1.length];
 }
 
 function main() {
