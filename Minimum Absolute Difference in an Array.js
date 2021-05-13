@@ -31,6 +31,15 @@ function readLine() {
 
 function minimumAbsoluteDifference(arr) {
     // Write your code here
+    let result = 1000000000000;
+    
+    for(let i = 0; arr.length > i; i ++){
+        for(let j = i+1; arr.length > j; j ++) {
+            if(Math.abs(arr[i] - arr[j]) < result) result = Math.abs(arr[i] - arr[j]);
+        }
+    }
+    
+    return result;
 
 }
 
