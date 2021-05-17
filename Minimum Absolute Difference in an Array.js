@@ -33,13 +33,13 @@ function minimumAbsoluteDifference(arr) {
     // Write your code here
     let result = 1000000000000;
     
-    for(let i = 0; arr.length > i; i ++){
-        for(let j = i+1; arr.length > j; j ++) {
-            
-            if(Math.abs(arr[i] - arr[j]) < result)
-                result = Math.abs(arr[i] - arr[j]);
-                
-        }
+    const arrSort = arr.sort((a, b) => a - b)
+    
+    console.log(arrSort); 
+    
+    for(let i = 0; arrSort.length-1 > i; i ++){ 
+        if(Math.abs(arrSort[i] - arrSort[i+1]) < result)
+            result = Math.abs(arrSort[i] - arrSort[i+1]);       
     }
     
     return result;
