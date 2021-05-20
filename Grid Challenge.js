@@ -30,8 +30,28 @@ function readLine() {
  */
 
 function gridChallenge(grid) {
-    // Write your code here
-
+    
+    const gridSort = grid.map(g => g.split('').sort());
+    let gridTranspose = JSON.parse(JSON.stringify(gridSort));
+    // console.log(gridSort[0].length)
+    for (let i = 0; i < gridSort.length; i++) {
+        for(let j = 0; j < gridSort.length; j++) {
+            gridTranspose[i][j] = gridSort[j][i];
+        }
+    }
+    
+    let gridTransposeSort = 
+        JSON.parse(JSON.stringify(gridTranspose)).map(g => g.sort());
+        
+    for (let i = 0; i < gridSort.length; i++) {
+        for(let j = 0; j < gridSort[i].length; j++) {
+            if(gridTranspose[i][j] != gridTransposeSort[i][j])
+                return 'NO'
+        }
+    }    
+    // console.log(gridSort)
+    // console.log(gridTranspose)
+    return 'YES'
 }
 
 function main() {
