@@ -33,7 +33,7 @@ function readLine() {
 
 function luckBalance(k, contests) {
     // Write your code here
-
+    console.log({k,contests})
 }
 
 function main() {
