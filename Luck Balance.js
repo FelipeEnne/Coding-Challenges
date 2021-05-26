@@ -32,8 +32,31 @@ function readLine() {
  */
 
 function luckBalance(k, contests) {
-    // Write your code here
-    console.log({k,contests})
+    let result = 0;
+    let failArray = [];
+    
+    for(let i = 0; contests.length > i; i++){
+        if(contests[i][1] === 0) {
+            result += contests[i][0];
+        } else {
+            failArray.push(contests[i][0]) ;  
+        }
+    }
+    
+    let failArraySort = failArray.sort((a,b) => b-a);
+    
+    for(let i = 0; failArraySort.length > i; i++){
+        if( k > i){
+            result += failArraySort[i];
+        }
+        else {
+            result -= failArraySort[i];
+        }
+         // console.log({result,failArraySort: failArraySort[i]});
+    }
+    
+    // console.log({result,failArraySort});
+    return result;
 }
 
 function main() {
