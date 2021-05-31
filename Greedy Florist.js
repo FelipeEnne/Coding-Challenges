@@ -26,8 +26,25 @@ function readLine() {
 
 // Complete the getMinimumCost function below.
 function getMinimumCost(k, c) {
-
-
+    c.sort((a,b) => b-a);
+    const cCount = c.length;
+    // console.log({k,cCount, c});
+    
+    let originalPrice = 0;
+    let cost = 0;
+    
+    for(let i = 0; cCount > i; i++) {
+        if(i-k+1 > 0) {
+            originalPrice = Math.floor(i/k);
+        } 
+        
+        cost += c[i]*(originalPrice + 1);
+        //console.log({k, cost});
+        
+    }
+    
+    // console.log({originalPrice});
+    return cost;
 }
 
 function main() {
