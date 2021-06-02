@@ -33,7 +33,17 @@ function readLine() {
 
 function maxMin(k, arr) {
     // Write your code here
-
+    arr.sort((a,b) => a - b);
+    let result = 100000;
+    
+    for(let i = 0; arr.length - k >= i ; i++ ){
+        if(arr[i+k-1] - arr[i] < result) {
+            result = arr[i+k-1] - arr[i];
+        }
+         // console.log({result,i: arr[i], o: arr[i+k-1]})
+    }
+    // console.log({k, arr, result})
+    return result;
 }
 
 function main() {
