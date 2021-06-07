@@ -28,9 +28,20 @@ function readLine() {
  * The function is expected to return a STRING.
  * The function accepts STRING s as parameter.
  */
+function reverseString(str) {
+    var newString = "";
+    for (var i = str.length - 1; i >= 0; i--) {
+        newString += str[i];
+    }
+    return newString;
+}
 
 function reverseShuffleMerge(s) {
     // Write your code here
+    let s1 = reverseString(s.slice(0, s.length/2));
+    let s2 = s.slice(s.length/2, s.length);
+    console.log({s, s1, s2});
+    
 
 }
 
