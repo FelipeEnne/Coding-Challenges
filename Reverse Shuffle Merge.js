@@ -40,9 +40,6 @@ function reverseShuffleMerge(s) {
     // Write your code here
     let s1 = reverseString(s.slice(0, s.length/2));
     let s2 = s.slice(s.length/2, s.length);
-    
-    
-    // console.log({s, s1, s2});
 }
 
 function main() {
