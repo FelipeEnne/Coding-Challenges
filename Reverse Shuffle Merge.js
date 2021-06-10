@@ -40,6 +40,18 @@ function reverseShuffleMerge(s) {
     // Write your code here
     let s1 = reverseString(s.slice(0, s.length/2));
     let s2 = s.slice(s.length/2, s.length);
+    
+    let mapFreq = {}
+    
+    for(let i = 0; s.length > i; i++){
+        if(mapFreq[s[i]]) {
+            mapFreq[s[i]] += 1
+        } else {
+            mapFreq[s[i]] = 1
+        }
+    }
+    
+    console.log(mapFreq);
 }
 
 function main() {
