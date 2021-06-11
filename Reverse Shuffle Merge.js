@@ -41,17 +41,48 @@ function reverseShuffleMerge(s) {
     let s1 = reverseString(s.slice(0, s.length/2));
     let s2 = s.slice(s.length/2, s.length);
     
-    let mapFreq = {}
+    let mapFreq = {};
+    let required = {};
+    let char;
     
     for(let i = 0; s.length > i; i++){
         if(mapFreq[s[i]]) {
-            mapFreq[s[i]] += 1
+            mapFreq[s[i]] += 1;
         } else {
-            mapFreq[s[i]] = 1
+            mapFreq[s[i]] = 1;
         }
     }
+    for(const v in mapFreq) {
+        required[v] = mapFreq[v]/2
+    }
     
-    console.log(mapFreq);
+    let solution = [];
+    let i=0;
+    
+    while (solution.length < s.length/2){
+        let min_char_pos = -1
+        
+        while(true){
+            let c = s[i];
+            if(required[c] > 0&& (min_char_pos < 0 || c < s[min_char_pos])){
+                min_char_pos = i;
+            }
+            mapFreq[c] -= 1;
+            if(mapFreq[c] < required[c]){
+                break
+            }
+            i += 1
+        }
+        
+        for(let j=min_char_pos+1;j<i+1;j++){
+            mapFreq[s[j]]+=1
+        }
+
+        required[s[min_char_pos]]-=1
+        solution.push(s[min_char_pos]);
+        i= min_char_pos+1
+    }
+    return solution.join('');
 }
 
 function main() {
