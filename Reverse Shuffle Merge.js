@@ -28,57 +28,38 @@ function readLine() {
  * The function is expected to return a STRING.
  * The function accepts STRING s as parameter.
  */
-function reverseString(str) {
-    var newString = "";
-    for (var i = str.length - 1; i >= 0; i--) {
-        newString += str[i];
-    }
-    return newString;
-}
 
 function reverseShuffleMerge(s) {
-    // Write your code here
-    let s1 = reverseString(s.slice(0, s.length/2));
-    let s2 = s.slice(s.length/2, s.length);
-    
-    let mapFreq = {};
-    let required = {};
-    let char;
-    
-    for(let i = 0; s.length > i; i++){
-        if(mapFreq[s[i]]) {
-            mapFreq[s[i]] += 1;
-        } else {
-            mapFreq[s[i]] = 1;
-        }
+    let map={};
+    s = s.split('').reverse('').join('')
+    for(let item of s.split('')){
+        map[item]=map[item]?map[item]+1:1;
     }
-    for(const v in mapFreq) {
-        required[v] = mapFreq[v]/2
+    let ref={}
+    for(let key in map){
+        ref[key] = map[key]/2
     }
-    
-    let solution = [];
-    let i=0;
-    
-    while (solution.length < s.length/2){
+    let solution = [],i=0;
+    while (solution.length<s.length/2){
         let min_char_pos = -1
-        
+        //find the smallest  
         while(true){
-            let c = s[i];
-            if(required[c] > 0&& (min_char_pos < 0 || c < s[min_char_pos])){
+            let c=s[i];
+            if(ref[c]>0&&(min_char_pos<0||c<s[min_char_pos])){
                 min_char_pos = i;
             }
-            mapFreq[c] -= 1;
-            if(mapFreq[c] < required[c]){
+            map[c] -= 1;
+            if(map[c] < ref[c]){
                 break
             }
-            i += 1
+            i+=1
         }
-        
+        //found the one, restore the count of other
         for(let j=min_char_pos+1;j<i+1;j++){
-            mapFreq[s[j]]+=1
+            map[s[j]]+=1
         }
-
-        required[s[min_char_pos]]-=1
+        //find the smallest  
+        ref[s[min_char_pos]]-=1
         solution.push(s[min_char_pos]);
         i= min_char_pos+1
     }
