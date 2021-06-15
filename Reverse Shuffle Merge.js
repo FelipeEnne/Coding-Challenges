@@ -30,35 +30,45 @@ function readLine() {
  */
 
 function reverseShuffleMerge(s) {
-    let map={};
-    s = s.split('').reverse('').join('')
+    
+    let map = {};
+    s = s.split('').reverse('').join('');
+    
     for(let item of s.split('')){
-        map[item]=map[item]?map[item]+1:1;
+        map[item] = map[item] ? map[item]+1 : 1;
     }
-    let ref={}
+    
+    let ref = {}
+    
     for(let key in map){
         ref[key] = map[key]/2
     }
-    let solution = [],i=0;
-    while (solution.length<s.length/2){
+    
+    let solution = [];
+    let i=0;
+    
+    while (solution.length < s.length/2){
         let min_char_pos = -1
-        //find the smallest  
+        
         while(true){
             let c=s[i];
-            if(ref[c]>0&&(min_char_pos<0||c<s[min_char_pos])){
+            
+            if(ref[c] > 0 && (min_char_pos < 0 || c < s[min_char_pos])){
                 min_char_pos = i;
             }
+            
             map[c] -= 1;
+            
             if(map[c] < ref[c]){
                 break
             }
             i+=1
         }
         //found the one, restore the count of other
-        for(let j=min_char_pos+1;j<i+1;j++){
+        for(let j=min_char_pos+1; j<i+1; j++){
             map[s[j]]+=1
         }
-        //find the smallest  
+        
         ref[s[min_char_pos]]-=1
         solution.push(s[min_char_pos]);
         i= min_char_pos+1
