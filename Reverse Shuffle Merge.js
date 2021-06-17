@@ -1,7 +1,5 @@
 'use strict';
 
-const fs = require('fs');
-
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
 
@@ -23,67 +21,28 @@ function readLine() {
 }
 
 /*
- * Complete the 'reverseShuffleMerge' function below.
+ * Complete the 'whatFlavors' function below.
  *
- * The function is expected to return a STRING.
- * The function accepts STRING s as parameter.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY cost
+ *  2. INTEGER money
  */
 
-function reverseShuffleMerge(s) {
-    
-    let map = {};
-    s = s.split('').reverse('').join('');
-    
-    for(let item of s.split('')){
-        map[item] = map[item] ? map[item]+1 : 1;
-    }
-    
-    let ref = {}
-    
-    for(let key in map){
-        ref[key] = map[key]/2
-    }
-    
-    let solution = [];
-    let i=0;
-    
-    while (solution.length < s.length/2){
-        let min_char_pos = -1
-        
-        while(true){
-            let c=s[i];
-            
-            if(ref[c] > 0 && (min_char_pos < 0 || c < s[min_char_pos])){
-                min_char_pos = i;
-            }
-            
-            map[c] -= 1;
-            
-            if(map[c] < ref[c]){
-                break
-            }
-            i+=1
-        }
-        //found the one, restore the count of other
-        for(let j=min_char_pos+1; j<i+1; j++){
-            map[s[j]]+=1
-        }
-        
-        ref[s[min_char_pos]]-=1
-        solution.push(s[min_char_pos]);
-        i= min_char_pos+1
-    }
-    return solution.join('');
+function whatFlavors(cost, money) {
+    // Write your code here
+    console.log({cost, money})
 }
 
 function main() {
-    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+    const t = parseInt(readLine().trim(), 10);
 
-    const s = readLine();
+    for (let tItr = 0; tItr < t; tItr++) {
+        const money = parseInt(readLine().trim(), 10);
 
-    const result = reverseShuffleMerge(s);
+        const n = parseInt(readLine().trim(), 10);
 
-    ws.write(result + '\n');
+        const cost = readLine().replace(/\s+$/g, '').split(' ').map(costTemp => parseInt(costTemp, 10));
 
-    ws.end();
+        whatFlavors(cost, money);
+    }
 }
