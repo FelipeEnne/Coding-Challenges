@@ -30,7 +30,28 @@ function readLine() {
 
 function whatFlavors(cost, money) {
     // Write your code here
-    console.log({cost, money})
+    // console.log({cost, money})
+    let sum = 10000;
+    let f1 = 0;
+    let f2 = 1;
+    
+    for(let i = 0; cost.length > i ; i++) {
+        for(let j = 1; cost.length > j ; j++) {
+            if(cost[i] + cost[j] == money && i !== j){
+                f1 = i;
+                f2 = j;
+                sum = cost[i] + cost[j];
+            }
+        }
+    }
+    
+    // console.log({sum, f1, f2})
+    if(f1 < f2) {
+        console.log(`${f1+1} ${f2+1}`)
+    } else {
+        console.log(`${f2+1} ${f1+1}`)
+    }
+    
 }
 
 function main() {
