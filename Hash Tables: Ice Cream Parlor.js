@@ -31,32 +31,27 @@ function readLine() {
 function whatFlavors(cost, money) {
     // Write your code here
     // console.log({cost, money})
-    let sum = 10000;
-    let value1 = 1000;
-    let value2 = 1000;
-    let position1 = 0;
-    let position2 = 1;
+    let sum = 100000000;
+    let f1 = 0;
+    let f2 = 1;
     
     for(let i = 0; cost.length > i ; i++) {
-        console.log({i})
-        if(value1 > cost[i] || value2 > cost[i]){
-            
-            if(value1 - value2 > 0){
-                position1 = i;
-                value1 = cost[i];
-            } else {
-                position2 = i;
-                value2 = cost[i];
+        for(let j = i+1; cost.length > j ; j++) {
+            if(cost[i] + cost[j] == money){
+                f1 = i;
+                f2 = j;
+                sum = cost[i] + cost[j];
+                break;
             }
-            
         }
+        if(sum == money)break;
     }
     
     // console.log({sum, f1, f2})
-    if(position1 < position2) {
-        console.log(`${position1} ${position2}`)
+    if(f1 < f2) {
+        console.log(`${f1+1} ${f2+1}`)
     } else {
-        console.log(`${position2} ${position1}`)
+        console.log(`${f2+1} ${f1+1}`)
     }
     
 }
