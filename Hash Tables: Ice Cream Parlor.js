@@ -29,31 +29,19 @@ function readLine() {
  */
 
 function whatFlavors(cost, money) {
-    // Write your code here
-    // console.log({cost, money})
-    let sum = 100000000;
-    let f1 = 0;
-    let f2 = 1;
-    
-    for(let i = 0; cost.length > i ; i++) {
-        for(let j = i+1; cost.length > j ; j++) {
-            if(cost[i] + cost[j] == money){
-                f1 = i;
-                f2 = j;
-                sum = cost[i] + cost[j];
-                break;
-            }
+   const map = new Map();
+   
+    for (let i = 0; i < cost.length; i++) {
+        
+        var target = money - cost[i];
+        
+        if (map.has(target)) {
+            console.log(map.get(target), i + 1);
+            break;
         }
-        if(sum == money)break;
+        
+        map.set(cost[i], i + 1);
     }
-    
-    // console.log({sum, f1, f2})
-    if(f1 < f2) {
-        console.log(`${f1+1} ${f2+1}`)
-    } else {
-        console.log(`${f2+1} ${f1+1}`)
-    }
-    
 }
 
 function main() {
