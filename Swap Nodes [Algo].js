@@ -32,8 +32,18 @@ function readLine() {
  */
 
 function swapNodes(indexes, queries) {
-    // Write your code here
+    class Node {
+    constructor(data, depth) {
+      this.data = data;
+      this.left = null;
+      this.right = null;
+      this.depth = depth;
+    }
+  }
 
+  let response = [];
+
+ 
 }
 
 function main() {
