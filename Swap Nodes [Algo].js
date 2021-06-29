@@ -42,7 +42,19 @@ function swapNodes(indexes, queries) {
   }
 
   let response = [];
+    
+  const queriesLen = queries.length;
+  const indexesLen = indexes.length;
+  const nodes = [new Node(1, 1)];
 
+  function createNode(value, root, position) {
+    if (value > -1) {
+      const depth = root.depth + 1;
+      const node = new Node(value, depth);
+      root[position] = node;
+      nodes.push(node);
+    }
+  }
  
 }
 
