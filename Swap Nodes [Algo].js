@@ -55,6 +55,12 @@ function swapNodes(indexes, queries) {
       nodes.push(node);
     }
   }
+  
+   function swapNode(k) {
+    const temp = nodes[k].left;
+    nodes[k].left = nodes[k].right;
+    nodes[k].right = temp;
+  }
  
 }
 
