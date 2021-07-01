@@ -61,6 +61,24 @@ function swapNodes(indexes, queries) {
     nodes[k].left = nodes[k].right;
     nodes[k].right = temp;
   }
+  
+   function inOrder(_root) {
+    const result = [];
+    const action = root => {
+      if (root !== null) {
+        action(root.left);
+        result.push(root.data);
+        action(root.right);
+      }
+    };
+    action(_root);
+    return result;
+  }
+  
+  for (let i = 0; i < indexesLen; i++) {
+    createNode(indexes[i][0], nodes[i], "left");
+    createNode(indexes[i][1], nodes[i], "right");
+  }
  
 }
 
