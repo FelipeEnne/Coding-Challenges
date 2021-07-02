@@ -62,7 +62,7 @@ function swapNodes(indexes, queries) {
     nodes[k].right = temp;
   }
   
-   function inOrder(_root) {
+  function inOrder(_root) {
     const result = [];
     const action = root => {
       if (root !== null) {
@@ -73,11 +73,6 @@ function swapNodes(indexes, queries) {
     };
     action(_root);
     return result;
-  }
-  
-  for (let i = 0; i < indexesLen; i++) {
-    createNode(indexes[i][0], nodes[i], "left");
-    createNode(indexes[i][1], nodes[i], "right");
   }
  
 }
