@@ -74,6 +74,24 @@ function swapNodes(indexes, queries) {
     action(_root);
     return result;
   }
+  
+   for (let i = 0; i < indexesLen; i++) {
+    createNode(indexes[i][0], nodes[i], "left");
+    createNode(indexes[i][1], nodes[i], "right");
+  }
+
+  for (let i = 0; i < queriesLen; i++) {
+    const jump = queries[i];
+    for (let k = 0; k < nodes.length; k++) {
+      const node = nodes[k];
+      if (0 === node.depth % jump) {
+        //console.log('swapNode', node.data), jump;
+        swapNode(k);
+      }
+    }
+    response.push(inOrder(nodes[0]));
+  }
+  return response;
  
 }
 
