@@ -33,7 +33,7 @@ function readLine() {
 
 function pairs(k, arr) {
     // Write your code here
-
+    console.log({k, arr})
 }
 
 function main() {
