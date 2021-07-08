@@ -33,7 +33,23 @@ function readLine() {
 
 function pairs(k, arr) {
     // Write your code here
-    console.log({k, arr})
+    // console.log({k, arr});
+    let mapArr = {};
+    let result = 0;
+    
+    for(let i = 0; arr.length > i; i ++){
+        if(mapArr[arr[i]]) {
+            mapArr[arr[i]] += 1;
+            result ++;
+        } else {
+            if(arr[i] > k) mapArr[Math.abs(arr[i]-k)] = 1;
+            else mapArr[Math.abs(arr[i]+k)] = 1;
+        }
+        console.log(mapArr);
+    };
+    // console.log({result, mapArr});
+    
+    return result;
 }
 
 function main() {
