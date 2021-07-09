@@ -38,16 +38,24 @@ function pairs(k, arr) {
     let result = 0;
     
     for(let i = 0; arr.length > i; i ++){
-        if(mapArr[arr[i]]) {
-            mapArr[arr[i]] += 1;
-            result ++;
+        let value = arr[i] > k ? Math.abs(arr[i]-k) : arr[i]+k;
+        
+        if(mapArr[value]) {
+            mapArr[value] += 1;
         } else {
-            if(arr[i] > k) mapArr[Math.abs(arr[i]-k)] = 1;
-            else mapArr[Math.abs(arr[i]+k)] = 1;
+             mapArr[value] = 1;
         }
-        console.log(mapArr);
+        // console.log({mapArr, value});
     };
     // console.log({result, mapArr});
+    
+    for(let i = 0; arr.length > i; i ++){
+        
+        if(mapArr[arr[i]]) {
+            result += mapArr[arr[i]];
+        } 
+        console.log({mapArr});
+    };
     
     return result;
 }
