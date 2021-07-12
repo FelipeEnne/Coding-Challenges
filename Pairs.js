@@ -47,12 +47,15 @@ function pairs(k, arr) {
         }
         // console.log({mapArr, value});
     };
-    // console.log({result, mapArr});
+    console.log({result, mapArr});
     
     for(let i = 0; arr.length > i; i ++){
-        
-        if(mapArr[arr[i]]) {
+        if(mapArr[arr[i]] && mapArr[arr[i]] > 0) { 
+            let value = arr[i] > k ? Math.abs(arr[i]-k) : arr[i]+k;
+           
             result += mapArr[arr[i]];
+            mapArr[arr[i]] -= 1;
+            mapArr[value] -= 1;
         } 
         console.log({mapArr});
     };
