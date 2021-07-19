@@ -26,7 +26,28 @@ function readLine() {
 
 // Complete the triplets function below.
 function triplets(a, b, c) {
-
+    // console.log({a,b,c});
+    let result = 0;
+    let a1 = new Set(a)
+    let b1 = new Set(b)
+    let c1 = new Set(c)
+    a = [...a1]
+    b = [...b1]
+    c = [...c1]
+    // console.log({a1,b1,c1});
+    
+    for(let i = 0; i < a.length; i++){
+        for(let j = 0; j < b.length; j++){
+            // console.log({a: a[i],b: b[j], f:a[i] <= b[j]});
+            if(a[i] <= b[j]) {
+                for(let k = 0; k < c.length; k++){
+                    // console.log({b: b[j],c: c[k], f:c[k] <= b[j]});
+                    if(c[k] <= b[j]) result ++;
+                }
+            }
+        }
+    }
+    return result;
 
 }
 
