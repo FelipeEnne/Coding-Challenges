@@ -31,22 +31,22 @@ function triplets(a, b, c) {
     let a1 = new Set(a)
     let b1 = new Set(b)
     let c1 = new Set(c)
-    a = [...a1]
-    b = [...b1]
-    c = [...c1]
+    a = [...a1].sort((a,b) => a - b)
+    b = [...b1].sort((a,b) => a - b)
+    c = [...c1].sort((a,b) => a - b)
     // console.log({a1,b1,c1});
-    
-    for(let i = 0; i < a.length; i++){
-        for(let j = 0; j < b.length; j++){
-            // console.log({a: a[i],b: b[j], f:a[i] <= b[j]});
-            if(a[i] <= b[j]) {
-                for(let k = 0; k < c.length; k++){
-                    // console.log({b: b[j],c: c[k], f:c[k] <= b[j]});
-                    if(c[k] <= b[j]) result ++;
-                }
-            }
+    let j = 0;
+    let k = 0;
+    for(let i = 0; i < b.length; i++){
+        while(j < a.length && a[j] <= b[i]) {
+            j++;
         }
+        while(k < c.length && c[k] <= b[i]) {
+            k++;
+        }
+        result += j * k
     }
+
     return result;
 
 }
