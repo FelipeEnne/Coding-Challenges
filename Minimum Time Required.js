@@ -26,8 +26,21 @@ function readLine() {
 
 // Complete the minTime function below.
 function minTime(machines, goal) {
+    let m = 0;
+    let days = 0;
 
+    
+    while(m < goal) {
+        m = 0;
+        
+        for(let i = 0; i < machines.length ;i++) {
+            m += Math.floor(days/machines[i]);    
+        }
+        
+        days += 1;
+    }
 
+    return days-1;
 }
 
 function main() {
