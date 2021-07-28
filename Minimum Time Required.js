@@ -26,21 +26,28 @@ function readLine() {
 
 // Complete the minTime function below.
 function minTime(machines, goal) {
-    let m = 0;
-    let days = 0;
+    
+    let faster = Math.min(...machines)
+    let slower = Math.max(...machines)
+
+    let lowerBound = Math.ceil((goal / machines.length) * faster)
+    let upperBound = Math.ceil((goal / machines.length) * slower)
 
     
-    while(m < goal) {
-        m = 0;
+    while(lowerBound < upperBound){
         
-        for(let i = 0; i < machines.length ;i++) {
-            m += Math.floor(days/machines[i]);    
+        let day = Math.floor((upperBound + lowerBound) / 2)
+        let sum = machines.reduce((xs, x) => xs + Math.floor(day / x), 0)
+        
+        if (sum < goal) {
+            lowerBound = day+1
+        } else if (sum >= goal) {
+            upperBound = day
         }
         
-        days += 1;
     }
 
-    return days-1;
+    return lowerBound
 }
 
 function main() {
