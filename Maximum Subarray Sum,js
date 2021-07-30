@@ -33,7 +33,9 @@ function readLine() {
 
 function maximumSum(a, m) {
     // Write your code here
-
+    
+    console.log({a, m})
+    
 }
 
 function main() {
