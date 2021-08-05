@@ -35,7 +35,7 @@ function readLine() {
 
 function minimumPasses(m, w, p, n) {
     // Write your code here
-
+    console.log({m, w, p, n})
 }
 
 function main() {
