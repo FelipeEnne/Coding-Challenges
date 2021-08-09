@@ -45,38 +45,39 @@ function minimumPasses(m, w, p, n) {
     let res = maxDays;
     
     
-    let rest = 0;
     let pr = 0;
     
     while( day < maxDays ) {
-        pr += m*w+rest;
+        pr += m*w;
         
-        console.log({m, w, rest, pr, buy:Math.floor(pr/p)});
+        //console.log({m, w, pr, buy:Math.floor(pr/p)});
         
-        if(pr > p){
+        if(pr >= p){
             let buy = Math.floor(pr/p);
             pr -= buy*p;
-            rest = pr%p;
+
             if(m > w){
-                if(m-w > buy) {
+                if(m-w >= buy) {
                     w += buy
                 } else {
+                    let tmp = Math.round((m+w+buy)/2)
                     m = Math.floor((m+w+buy)/2)
-                    w = Math.ceil((m+w+buy)/2)
+                    w = tmp
                 }  
             } else {
-                if(w-m > buy) {
+                if(w-m >= buy) {
                     m += buy
                 } else {
+                    let tmp = Math.round((m+w+buy)/2)
                     m = Math.floor((m+w+buy)/2)
-                    w = Math.ceil((m+w+buy)/2)
+                    w = tmp
                 }
             }
             
         }
         
-        console.log({m, w, rest, pr});
-        console.log({mathCeil:Math.ceil(n/(m*w)), res, day});
+        //console.log({m, w, pr});
+        //console.log({mathCeil:Math.ceil(n/(m*w)), res, day});
         if(Math.ceil(n/(m*w))+day <  res) {
             res = Math.ceil(n/(m*w))+day
             maxDays = Math.ceil(n/(m*w))+day
