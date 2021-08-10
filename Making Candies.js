@@ -34,60 +34,33 @@ function readLine() {
  */
 
 function minimumPasses(m, w, p, n) {
-    // Write your code here
-    let prod = m*w;
-    
-    let maxDays = Math.ceil(n/prod);
-    if(maxDays <= 2) return maxDays; 
-    
-    let day = 1;
-    
-    let res = maxDays;
-    
-    
-    let pr = 0;
-    
-    while( day < maxDays ) {
-        pr += m*w;
-        
-        //console.log({m, w, pr, buy:Math.floor(pr/p)});
-        
-        if(pr >= p){
-            let buy = Math.floor(pr/p);
-            pr -= buy*p;
-
-            if(m > w){
-                if(m-w >= buy) {
-                    w += buy
+    let pass=0, min = Math.ceil(n/(m*w)), points=0;
+    while(pass < min) {
+        let dPass = Math.ceil((p-points)/(m*w));
+        pass+=dPass;
+        points+=m*w*dPass;
+        if (Math.floor(points/p) >= Math.abs(m-w)) {
+            points -= Math.abs(m-w) * p;
+            m > w ? w = m : m = w;
+            let upgrades = Math.floor(points/p);
+            if (upgrades > 0) {
+                if (upgrades % 2 === 0) {
+                    m=w=m+(upgrades/2);
                 } else {
-                    let tmp = Math.round((m+w+buy)/2)
-                    m = Math.floor((m+w+buy)/2)
-                    w = tmp
-                }  
-            } else {
-                if(w-m >= buy) {
-                    m += buy
-                } else {
-                    let tmp = Math.round((m+w+buy)/2)
-                    m = Math.floor((m+w+buy)/2)
-                    w = tmp
+                    m=w=m+Math.floor(upgrades/2);
+                    m++;
                 }
+                points -= upgrades * p;
             }
-            
+        } else {
+            let upgrades = Math.floor(points/p);
+            m > w ? w+=upgrades : m+=upgrades;
+            points -= upgrades * p;
         }
-        
-        //console.log({m, w, pr});
-        //console.log({mathCeil:Math.ceil(n/(m*w)), res, day});
-        if(Math.ceil(n/(m*w))+day <  res) {
-            res = Math.ceil(n/(m*w))+day
-            maxDays = Math.ceil(n/(m*w))+day
-        }
-        
-        day++;
-    };
-    
-    
-    return res;
+        let minPass = Math.ceil((n-points)/(m*w));
+        if (min > minPass+pass) min = minPass+pass;
+    }
+    return min;
 }
 
 function main() {
