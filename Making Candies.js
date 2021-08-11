@@ -34,11 +34,15 @@ function readLine() {
  */
 
 function minimumPasses(m, w, p, n) {
-    let pass=0, min = Math.ceil(n/(m*w)), points=0;
+    let pass = 0;
+    let min = Math.ceil(n/(m*w));
+    let points = 0;
+    
     while(pass < min) {
         let dPass = Math.ceil((p-points)/(m*w));
-        pass+=dPass;
-        points+=m*w*dPass;
+        pass += dPass;
+        points += m*w*dPass;
+        
         if (Math.floor(points/p) >= Math.abs(m-w)) {
             points -= Math.abs(m-w) * p;
             m > w ? w = m : m = w;
@@ -54,9 +58,10 @@ function minimumPasses(m, w, p, n) {
             }
         } else {
             let upgrades = Math.floor(points/p);
-            m > w ? w+=upgrades : m+=upgrades;
+            m > w ? w += upgrades : m+=upgrades;
             points -= upgrades * p;
         }
+        
         let minPass = Math.ceil((n-points)/(m*w));
         if (min > minPass+pass) min = minPass+pass;
     }
