@@ -27,7 +27,19 @@ function readLine() {
 // Complete the maxSubsetSum function below.
 function maxSubsetSum(arr) {
 
+    console.log(arr)
+    let count1 = 0;
+    let count2 = 0;
+    
+    arr.map((a,i) =>{
+        if(i%2 == 0) {
+        if(a > 0) count1 += a
+        } else { 
+            if(a > 0) count2 += a
+        }
+    })
 
+    return Math.max(count1, count2)    
 }
 
 function main() {
