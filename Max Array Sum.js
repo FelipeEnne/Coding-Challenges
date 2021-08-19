@@ -27,14 +27,16 @@ function readLine() {
 // Complete the maxSubsetSum function below.
 function maxSubsetSum(arr) {
 
-    console.log(arr)
-     let maxArr = [];
+    let maxArr = [];
+     
     maxArr.push(0);
     maxArr.push(arr[0]);
     
-    for(let i=2;i<=arr.length;++i){
-        maxArr.push(Math.max(maxArr[i-2] + arr[i-1],maxArr[i-1],arr[i-1]));
+    for(let i=2; i<=arr.length; ++i){
+        let findMax = Math.max(maxArr[i-2] + arr[i-1],maxArr[i-1],arr[i-1])
+        maxArr.push(findMax);
     }
+
     return maxArr.pop();
 }
 
