@@ -33,18 +33,14 @@ function readLine() {
 
 function abbreviation(a, b) {
     // Write your code here
-    a = a.toUpperCase() 
-    b = b.toUpperCase()
-    
-    let count = 0;
-    let countUppercase = 0;
-    
+    let count = 0;    
     
     for(let i = 0; a.length > i; i++){
-        if(a[i] == b[count]){
+        if(a[i].toUpperCase() == b[count]){
             count++;
+        } else if(a[i] == a[i].toUpperCase()){
+            return "NO";
         }
-        
     }
     
     if(count == b.length) return "YES";
