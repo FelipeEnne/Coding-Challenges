@@ -32,20 +32,27 @@ function readLine() {
  */
 
 function abbreviation(a, b) {
-    // Write your code here
-    let count = 0;    
+    let dp=Array(a.length+1).fill(0);
     
-    for(let i = 0; a.length > i; i++){
-        if(a[i].toUpperCase() == b[count]){
-            count++;
-        } else if(a[i] == a[i].toUpperCase()){
-            return "NO";
-        }
+    for(let i=0;i<=a.length;i++){
+        dp[i]=Array(b.length+1).fill(0);
     }
     
-    if(count == b.length) return "YES";
-    return "NO";
+    dp[0][0]=1;
     
+    // console.log(dp)
+    
+     for(let i=0;i<a.length;i++){
+       for(let j=0;j<=b.length;j++){
+             if(dp[i][j]===0) continue;
+             if(j<b.length && a[i].toUpperCase()===b[j]){dp[i+1][j+1]=1;}
+             if(a[i]!==a[i].toUpperCase()){dp[i+1][j]=1;}
+          }
+      }
+    
+    console.log(dp)
+    
+    return dp[a.length][b.length]?"YES":"NO";
 }
 
 function main() {
