@@ -33,7 +33,7 @@ function readLine() {
 
 function candies(n, arr) {
     // Write your code here
-
+    console.log({n, arr})
 }
 
 function main() {
