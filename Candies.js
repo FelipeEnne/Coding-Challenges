@@ -34,6 +34,22 @@ function readLine() {
 function candies(n, arr) {
     // Write your code here
     console.log({n, arr})
+    
+    let arr1 = Array(arr.length).fill(1);
+    
+    let resp = arr.length;
+    
+    
+    for(let i = 0; arr.length-1 > i; i++) {
+        if(arr[i+1] > arr[i]){
+            resp += arr1[i];
+            arr1[i+1] += arr1[i];
+        }
+    }
+    
+    console.log(arr1)
+    
+    return resp
 }
 
 function main() {
