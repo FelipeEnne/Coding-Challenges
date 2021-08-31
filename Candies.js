@@ -32,24 +32,27 @@ function readLine() {
  */
 
 function candies(n, arr) {
-    // Write your code here
-    console.log({n, arr})
-    
-    let arr1 = Array(arr.length).fill(1);
-    
-    let resp = arr.length;
-    
-    
-    for(let i = 0; arr.length-1 > i; i++) {
-        if(arr[i+1] > arr[i]){
-            resp += arr1[i];
-            arr1[i+1] += arr1[i];
-        }
+
+  let a = 1, c = [a], a1 = 1, c1 = [a1], cost = 0
+  for (let i = 0; i + 1 < arr.length; i++) {
+    if (arr[i + 1] > arr[i]) {
+      a++
+    } else {
+      a = 1
     }
-    
-    console.log(arr1)
-    
-    return resp
+    c.push(a)
+  }
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (a1 > c[i]) {
+      c.splice(i, 1, a1)
+    }
+    if (arr[i] < arr[i - 1]) {
+      a1++
+    } else {
+      a1 = 1
+    }
+  }
+  return c.reduce((ac, n) => ac + n)
 }
 
 function main() {
