@@ -33,7 +33,14 @@ function readLine() {
 
 function candies(n, arr) {
 
-  let a = 1, c = [a], a1 = 1, c1 = [a1], cost = 0
+  let a = 1;
+  let c = [a];
+  
+  let a1 = 1;
+  let c1 = [a1];
+  
+  let cost = 0
+  
   for (let i = 0; i + 1 < arr.length; i++) {
     if (arr[i + 1] > arr[i]) {
       a++
@@ -42,6 +49,7 @@ function candies(n, arr) {
     }
     c.push(a)
   }
+  
   for (let i = arr.length - 1; i >= 0; i--) {
     if (a1 > c[i]) {
       c.splice(i, 1, a1)
@@ -52,6 +60,8 @@ function candies(n, arr) {
       a1 = 1
     }
   }
+  
+  // console.log(c)
   return c.reduce((ac, n) => ac + n)
 }
 
