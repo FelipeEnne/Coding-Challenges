@@ -23,63 +23,29 @@ function readLine() {
 }
 
 /*
- * Complete the 'candies' function below.
+ * Complete the 'decibinaryNumbers' function below.
  *
  * The function is expected to return a LONG_INTEGER.
- * The function accepts following parameters:
- *  1. INTEGER n
- *  2. INTEGER_ARRAY arr
+ * The function accepts LONG_INTEGER x as parameter.
  */
 
-function candies(n, arr) {
-
-  let a = 1;
-  let c = [a];
-  
-  let a1 = 1;
-  let c1 = [a1];
-  
-  let cost = 0
-  
-  for (let i = 0; i + 1 < arr.length; i++) {
-    if (arr[i + 1] > arr[i]) {
-      a++
-    } else {
-      a = 1
-    }
-    c.push(a)
-  }
-  
-  for (let i = arr.length - 1; i >= 0; i--) {
-    if (a1 > c[i]) {
-      c.splice(i, 1, a1)
-    }
-    if (arr[i] < arr[i - 1]) {
-      a1++
-    } else {
-      a1 = 1
-    }
-  }
-  
-  // console.log(c)
-  return c.reduce((ac, n) => ac + n)
+function decibinaryNumbers(x) {
+    // Write your code here
+    console.log(x)
 }
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
-    const n = parseInt(readLine().trim(), 10);
+    const q = parseInt(readLine().trim(), 10);
 
-    let arr = [];
+    for (let qItr = 0; qItr < q; qItr++) {
+        const x = parseInt(readLine().trim(), 10);
 
-    for (let i = 0; i < n; i++) {
-        const arrItem = parseInt(readLine().trim(), 10);
-        arr.push(arrItem);
+        const result = decibinaryNumbers(x);
+
+        ws.write(result + '\n');
     }
-
-    const result = candies(n, arr);
-
-    ws.write(result + '\n');
 
     ws.end();
 }
