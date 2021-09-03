@@ -31,7 +31,9 @@ function readLine() {
 
 function decibinaryNumbers(x) {
     // Write your code here
-    console.log(x)
+    if(x === 1) {
+        return 0;
+    }
 }
 
 function main() {
