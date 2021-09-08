@@ -28,12 +28,37 @@ function readLine() {
  * The function is expected to return a LONG_INTEGER.
  * The function accepts LONG_INTEGER x as parameter.
  */
+const N = 285133;
+const D = 20;
+
+function createDuplicateArr(N, D) {
+    let duplicates = new Array(N);
+    for(let i=0; i<N; i++) {
+        duplicates[i] = new Array(D);
+    }
+    for(let i=0; i<N; i++) {
+        duplicates[i][0] = i < 10 ? 1 : 0
+    }
+    for(let i=0; i<N; i++) {
+        for(let j=1; j<D; j++) {
+            duplicates[i][j] = duplicates[i][j-1];
+            let m = 1 << j;
+            for(let k=1; k<=9; k++) {
+                let remN = i - k*m;
+                if(remN >= 0) {
+                    duplicates[i][j] += duplicates[remN][j - 1];
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+    return duplicates;
+}
 
 function decibinaryNumbers(x) {
-    // Write your code here
-    if(x === 1) {
-        return 0;
-    }
+
+
 }
 
 function main() {
