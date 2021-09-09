@@ -56,6 +56,16 @@ function createDuplicateArr(N, D) {
     return duplicates;
 }
 
+function calcLessThanCounts(duplicates) {
+    let lessThanCounts = new Array(duplicates.length);
+
+    lessThanCounts[0] = BigInt(0);
+    for(let i=1; i<duplicates.length; i++) {
+        lessThanCounts[i] = lessThanCounts[i - 1] + BigInt(duplicates[i - 1][D - 1]);
+    }
+    return lessThanCounts;
+}
+
 function decibinaryNumbers(x) {
 
 
