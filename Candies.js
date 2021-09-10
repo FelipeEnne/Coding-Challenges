@@ -66,6 +66,20 @@ function calcLessThanCounts(duplicates) {
     return lessThanCounts;
 }
 
+function lowerBound(arr, val) {
+    let l = 0;
+    let h = arr.length;
+    while(l < h) {
+        let mid = Math.floor((l + h) / 2);
+        if(val > arr[mid]) {
+            l = mid + 1;
+        } else {
+            h = mid;
+        }
+    }
+    return l;
+}
+
 function decibinaryNumbers(x) {
 
 
