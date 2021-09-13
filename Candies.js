@@ -66,6 +66,20 @@ function calcLessThanCounts(duplicates) {
     return lessThanCounts;
 }
 
+function lowerBoundBig(arr, val) {
+    let l = 0;
+    let h = arr.length;
+    while(l < h) {
+        let mid = Math.floor((l + h) / 2);
+        if(BigInt(arr[mid]) < BigInt(val)) {
+            l = mid + 1;
+        } else {
+            h = mid;
+        }
+    }
+    return l;
+}
+
 function lowerBound(arr, val) {
     let l = 0;
     let h = arr.length;
