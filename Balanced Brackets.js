@@ -31,7 +31,7 @@ function readLine() {
 
 function isBalanced(s) {
     // Write your code here
-
+    console.log(s)
 }
 
 function main() {
