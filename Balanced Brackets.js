@@ -31,7 +31,130 @@ function readLine() {
 
 function isBalanced(s) {
     // Write your code here
-    console.log(s)
+    let isNext = {
+        ')':0,
+        ']':0,
+        '}':0
+    };
+    
+    let arr = [];
+    
+    for(let i=0; s.length > i; i++) {
+        //console.log({arr, s})
+        if(s[i] == '('){
+            arr.push('(');
+            isNext = {
+                ')':1,
+                ']':0,
+                '}':0
+            };
+        };
+        
+        if(s[i] ==  '['){
+            arr.push('[');
+            isNext = {
+                ')':0,
+                ']':1,
+                '}':0
+            };
+        };
+        
+        if(s[i] == '{'){
+            arr.push('{')
+            isNext = {
+                ')':0,
+                ']':0,
+                '}':1
+            };
+        };
+        
+        if(s[i] == ')' ) {
+            if(isNext[')'] != 1) return 'NO';
+            arr.pop();
+            if(arr[arr.length - 1] == '('){
+                isNext = {
+                    ')':1,
+                    ']':0,
+                    '}':0
+                };
+            };
+            
+            if(arr[arr.length - 1] ==  '['){
+                isNext = {
+                    ')':0,
+                    ']':1,
+                    '}':0
+                };
+            };
+            
+            if(arr[arr.length - 1] == '{'){
+                isNext = {
+                    ')':0,
+                    ']':0,
+                    '}':1
+                };
+            };
+        }
+        
+        if(s[i] == ']' ) {
+            if(isNext[']'] != 1) return  'NO';
+            arr.pop();
+            if(arr[arr.length - 1] == '('){
+                isNext = {
+                    ')':1,
+                    ']':0,
+                    '}':0
+                };
+            };
+            
+            if(arr[arr.length - 1] ==  '['){
+                isNext = {
+                    ')':0,
+                    ']':1,
+                    '}':0
+                };
+            };
+            
+            if(arr[arr.length - 1] == '{'){
+                isNext = {
+                    ')':0,
+                    ']':0,
+                    '}':1
+                };
+            };
+        }
+        
+        if(s[i] == '}' ) {
+            if(isNext['}'] != 1) return  'NO';
+            arr.pop();
+            if(arr[arr.length - 1] == '('){
+                isNext = {
+                    ')':1,
+                    ']':0,
+                    '}':0
+                };
+            };
+            
+            if(arr[arr.length - 1] ==  '['){
+                isNext = {
+                    ')':0,
+                    ']':1,
+                    '}':0
+                };
+            };
+            
+            if(arr[arr.length - 1] == '{'){
+                isNext = {
+                    ')':0,
+                    ']':0,
+                    '}':1
+                };
+            };
+        }
+        
+    }
+    
+    return 'YES';
 }
 
 function main() {
