@@ -1,5 +1,8 @@
 function processData(input) {
     //Enter your code here
+    let x = []
+    x.push(input)
+    console.log(x)
 } 
 
 process.stdin.resume();
