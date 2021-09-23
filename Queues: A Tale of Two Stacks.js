@@ -1,8 +1,9 @@
 function processData(input) {
     //Enter your code here
-    let x = []
-    x.push(input)
-    console.log(x)
+    let queue = []
+    input = input.match(/.+\b/g);
+    queue.push(input)
+    console.log(queue)
 } 
 
 process.stdin.resume();
