@@ -2,8 +2,17 @@ function processData(input) {
     //Enter your code here
     let queue = []
     input = input.match(/.+\b/g);
-    queue.push(input)
-    console.log(queue)
+    
+    for(let i=1; i<input.length; i++) {  
+        let re = /(\d+)\s(\d+)\b/.exec(input[i]);
+        if (re) {
+            queue.push(re[2]);
+        } else if (input[i] == 2) {
+            queue.shift();
+        } else {
+            console.log(queue[0]);
+        }
+    }
 } 
 
 process.stdin.resume();
