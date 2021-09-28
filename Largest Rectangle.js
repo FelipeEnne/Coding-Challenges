@@ -31,7 +31,7 @@ function readLine() {
 
 function largestRectangle(h) {
     // Write your code here
-
+    console.log(h)
 }
 
 function main() {
