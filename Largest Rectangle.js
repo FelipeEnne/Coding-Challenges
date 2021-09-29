@@ -31,7 +31,22 @@ function readLine() {
 
 function largestRectangle(h) {
     // Write your code here
-    console.log(h)
+    let h1 = h.length;
+    let l1 = Math.min(...h);
+    
+    let result = h1*l1;
+
+
+    for(let i = 0; h.length > i; i++){
+        h.shift();
+        h1 = h.length;
+        l1 = Math.min(...h);
+    
+        if(h1*l1 > result) result = h1*l1;
+
+    }
+    
+    return result;
 }
 
 function main() {
