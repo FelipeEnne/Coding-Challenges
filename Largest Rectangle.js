@@ -32,7 +32,7 @@ function readLine() {
 function largestRectangle(h) {
     // Write your code here
     let h1 = h.length;
-    let l1 = Math.min(...h);
+    let l1 = h[0];
     
     let result = h1*l1;
 
