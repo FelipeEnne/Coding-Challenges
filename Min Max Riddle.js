@@ -27,7 +27,7 @@ function readLine() {
 // Complete the solve function below.
 function solve(arr) {
     // solve here
-
+    console.log(arr);
 }
 
 function main() {
