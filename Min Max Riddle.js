@@ -27,7 +27,24 @@ function readLine() {
 // Complete the solve function below.
 function solve(arr) {
     // solve here
-    console.log(arr);
+    let result = [];
+    
+    for(let i = 0;arr.length > i;i++){
+        let line = []
+        
+        for(let j = 0;arr.length-i > j;j++){
+            let x = arr.slice(j,i+1+j)
+            if(x.length>0){
+                line.push(Math.min(...x))
+            }
+            //console.log({line, x, i , j})
+        }
+        
+        result.push(Math.max(...line))
+        //console.log({line, result})
+    }
+    
+    return result;
 }
 
 function main() {
@@ -37,7 +54,7 @@ function main() {
 
     const arr = readLine().split(' ').map(arrTemp => parseInt(arrTemp, 10));
 
-    const res = riddle(arr);
+    const res = solve(arr);
 
     ws.write(res.join(' ') + '\n');
 
