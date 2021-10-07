@@ -27,24 +27,24 @@ function readLine() {
 // Complete the solve function below.
 function solve(arr) {
     // solve here
-    let result = [];
-    
-    for(let i = 0;arr.length > i;i++){
-        let line = []
-        
-        for(let j = 0;arr.length-i > j;j++){
-            let x = arr.slice(j,i+1+j)
-            if(x.length>0){
-                line.push(Math.min(...x))
-            }
-            //console.log({line, x, i , j})
+    arr.push(0)
+    const n = arr.length
+    const windowSizes = new Array(arr.length).fill(0)
+    const positions = []
+    let i = 0
+    while (i < n) {
+        if (!positions.length || arr[positions[positions.length-1]] <= arr[i]) {
+            positions.push(i++)
+        } else {
+            const top = positions.pop()
+            const range = positions.length ? (i - positions[positions.length-1] - 1) : i
+            if (range < 1 || range > arr.length || arr[top] === 0) continue
+            windowSizes[range-1] = Math.max(windowSizes[range-1], arr[top])
         }
-        
-        result.push(Math.max(...line))
-        //console.log({line, result})
     }
-    
-    return result;
+  
+    windowSizes.pop()
+    return windowSizes
 }
 
 function main() {
