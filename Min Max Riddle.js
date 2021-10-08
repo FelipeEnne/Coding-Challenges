@@ -42,7 +42,9 @@ function solve(arr) {
             windowSizes[range-1] = Math.max(windowSizes[range-1], arr[top])
         }
     }
-  
+    for (let i = n - 2; i >= 0; i--) {
+        windowSizes[i] = Math.max(windowSizes[i], windowSizes[i+1])
+    }
     windowSizes.pop()
     return windowSizes
 }
