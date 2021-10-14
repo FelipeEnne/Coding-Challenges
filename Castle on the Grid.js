@@ -36,7 +36,7 @@ function readLine() {
 
 function minimumMoves(grid, startX, startY, goalX, goalY) {
     // Write your code here
-
+    console.log({grid, startX, startY, goalX, goalY})
 }
 
 function main() {
