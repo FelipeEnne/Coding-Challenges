@@ -35,8 +35,16 @@ function readLine() {
  */
 
 function minimumMoves(grid, startX, startY, goalX, goalY) {
-    // Write your code here
-    console.log({grid, startX, startY, goalX, goalY})
+    if (grid[startX][startY] === 'X' || grid[goalX][goalY] === 'X') return 0;
+    
+    const queue = [];
+    
+    const startCell = {
+        position: { x: startX, y: startY },
+        moves: 0
+    };
+   
+   
 }
 
 function main() {
