@@ -44,7 +44,10 @@ function minimumMoves(grid, startX, startY, goalX, goalY) {
         moves: 0
     };
    
-   
+   queue.push(startCell)
+    // HASH MAP X_Y
+    const visited = {}
+    visited[`${startX}_${startY}`] = true
 }
 
 function main() {
