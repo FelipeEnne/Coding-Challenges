@@ -48,6 +48,20 @@ function minimumMoves(grid, startX, startY, goalX, goalY) {
     // HASH MAP X_Y
     const visited = {}
     visited[`${startX}_${startY}`] = true
+    
+    
+    const markCellAsVisited = (x, y, moves, parent) => {
+        const cellKey = `${x}_${y}`
+        if (grid[x][y] === 'X' || visited[cellKey]) return null
+        visited[cellKey] = true
+        const newCell = {
+            position: { x, y },
+            moves,
+            parent
+        }
+        queue.push(newCell)
+        return newCell
+    }
 }
 
 function main() {
