@@ -31,7 +31,7 @@ function readLine() {
 
 function poisonousPlants(p) {
     // Write your code here
-
+    console.log(p)
 }
 
 function main() {
