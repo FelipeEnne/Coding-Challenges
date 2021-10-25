@@ -31,7 +31,28 @@ function readLine() {
 
 function poisonousPlants(p) {
     // Write your code here
-    console.log(p)
+    let days = 0;
+    let stop = true;
+    
+    while(stop) {
+        stop = false;
+        
+        let r = [p[0]]
+        for(let i = 1; p.length > i; i++){
+            if(p[i] > p[i-1]) {
+                stop = true;
+            } else {
+                r.push(p[i])
+            }
+        }
+        
+
+        p=r
+        //console.log({p, r})
+        if(stop) days++;
+    }
+    
+    return days;
 }
 
 function main() {
