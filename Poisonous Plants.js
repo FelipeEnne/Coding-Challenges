@@ -32,6 +32,11 @@ function readLine() {
 function poisonousPlants(p) {
    var maxDaysAlive = 0;
     var stack = [];
+     for (let i = 0; i < p.length; i++){
+        let daysAlive = 0;
+     
+     
+     }
 }
 
 function main() {
