@@ -34,8 +34,8 @@ function readLine() {
  */
 
 function roadsAndLibraries(n, c_lib, c_road, cities) {
-    // Write your code here
-
+    if(c_road >= c_lib) return c_lib*n;
+    console.log({n, c_lib, c_road, cities})
 }
 
 function main() {
