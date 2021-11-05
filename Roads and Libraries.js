@@ -35,7 +35,10 @@ function readLine() {
 
 function roadsAndLibraries(n, c_lib, c_road, cities) {
     if(c_road >= c_lib) return c_lib*n;
+    let result = c_lib;
     console.log({n, c_lib, c_road, cities})
+    return c_lib+2*c_road
+   
 }
 
 function main() {
