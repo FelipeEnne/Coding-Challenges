@@ -32,12 +32,25 @@ function readLine() {
  *  3. INTEGER c_road
  *  4. 2D_INTEGER_ARRAY cities
  */
+// Create Adjacency List
+function adjacencyList(cities) {
+    const map = new Map();
+    cities.forEach(c => {
+        const [c1, c2] = c;
+        if (map.has(c1)) map.get(c1).cities.push(c2);
+        else map.set(c1, {cities: [c2], visited: false});
+        if (map.has(c2)) map.get(c2).cities.push(c1);
+        else map.set(c2, {cities: [c1], visited: false});
+    });
+    return map;
+}
 
 function roadsAndLibraries(n, c_lib, c_road, cities) {
     if(c_road >= c_lib) return c_lib*n;
-    let result = c_lib;
-    console.log({n, c_lib, c_road, cities})
-    return c_lib+2*c_road
+    const map = adjacencyList(cities);
+    
+    
+    return map;
    
 }
 
