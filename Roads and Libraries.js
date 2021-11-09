@@ -45,12 +45,31 @@ function adjacencyList(cities) {
     return map;
 }
 
+// Depth-First Search
+function dfs(vals, map, roads = 0) {
+    if (vals.visited) return roads;
+    vals.visited = true;
+    vals.cities.forEach(v => {
+        roads += dfs(map.get(v), map);
+    });
+    return roads + 1;
+}
+
 function roadsAndLibraries(n, c_lib, c_road, cities) {
     if(c_road >= c_lib) return c_lib*n;
     const map = adjacencyList(cities);
     
+    let libs = 0;
+    let roads = 0;
+
+    for (const vals of map.values()) {
+        if (vals.visited) continue;
+        roads += dfs(vals, map)-1;
+        libs++;
+    }
     
-    return map;
+    libs += n - map.size;
+    return c_lib * libs + c_road * roads;
    
 }
 
