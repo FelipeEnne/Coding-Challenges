@@ -6,7 +6,7 @@ Example
 n=7
 ar=[1,2,1,2,1,3,2]
 
-There is one pair of color  and one of color . There are three odd socks left, one of each color. The number of pairs is .
+There is one pair of color 1 and one of color 2. There are three odd socks left, one of each color. The number of pairs is 2.
 
 ### Function Description
 
@@ -23,8 +23,8 @@ sockMerchant has the following parameter(s):
 
 ### Input Format
 
-The first line contains an integer , the number of socks represented in .
-The second line contains  space-separated integers, , the colors of the socks in the pile.
+The first line contains an integer n, the number of socks represented in ar.
+The second line contains n space-separated integers, ar[i], the colors of the socks in the pile.
 
 ### Constraints
 
@@ -33,13 +33,13 @@ The second line contains  space-separated integers, , the colors of the socks in
 
 ### Sample Input
 
-STDIN                       Function
------                       --------
-9                           n = 9
-10 20 20 10 10 30 50 10 20  ar = [10, 20, 20, 10, 10, 30, 50, 10, 20]
+> STDIN&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Function<br>
+  -----&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;--------<br>
+  9&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;n = 9<br>
+  10 20 20 10 10 30 50 10 20  ar = [10, 20, 20, 10, 10, 30, 50, 10, 20]
 
 ### Sample Output
 
-3
+> 3
 
 There are three pairs of socks.
