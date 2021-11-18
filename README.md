@@ -52,5 +52,3 @@
 * Counting Valleys
 
 
-
-OneDrive\Área de Trabalho\Projetos\Algorithm\Coding Challenges
