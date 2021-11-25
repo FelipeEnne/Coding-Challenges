@@ -17,7 +17,7 @@ index->	 1 2 3  4  5 6 7 8 9 10
 	[3,3,3,10,10,8,8,8,1, 0]
 The largest value is  after all operations are performed.
 
-Function Description
+### Function Description
 
 Complete the function arrayManipulation in the editor below. It must return an integer, the maximum value in the resulting array.
 
@@ -25,18 +25,18 @@ arrayManipulation has the following parameters:
 
 n - the number of elements in your array
 queries - a two dimensional array of queries where each queries[i] contains three integers, a, b, and k.
-Input Format
+
+### Input Format
 
 The first line contains two space-separated integers  and , the size of the array and the number of operations.
 Each of the next  lines contains three space-separated integers ,  and , the left index, right index and summand.
 
-Constraints
 
-Output Format
+### Output Format
 
 Return the integer maximum value in the finished array.
 
-Sample Input
+### Sample Input
 
 5 3
 1 2 100
@@ -45,7 +45,8 @@ Sample Input
 Sample Output
 
 200
-Explanation
+
+### Explanation
 
 After the first update list will be 100 100 0 0 0.
 After the second update list will be 100 200 100 100 100.
