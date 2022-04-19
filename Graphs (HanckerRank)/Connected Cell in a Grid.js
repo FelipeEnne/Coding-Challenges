@@ -31,6 +31,7 @@ function readLine() {
 
 function maxRegion(grid) {
   // Write your code here
+  console.log(grid)
 }
 
 function main() {
