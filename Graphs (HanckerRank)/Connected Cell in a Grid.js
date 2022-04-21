@@ -31,7 +31,20 @@ function readLine() {
 
 function maxRegion(grid) {
   // Write your code here
-  console.log(grid)
+  let max = 0;
+
+  const memo = new Set();
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; i++) {
+      if(grid[i][j] > 0){
+        const size = explore(grid, i, j, memo);
+        if(size > max) max = size;
+      }
+    }
+  }
+
+ return max;
 }
 
 function main() {
