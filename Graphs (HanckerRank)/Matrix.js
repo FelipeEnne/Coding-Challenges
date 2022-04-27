@@ -32,7 +32,8 @@ function readLine() {
  */
 
 const findParent = (parent, u) => {
-    if(parent === u)return u;
+    console.log({parent, u})
+    if(parent[u] == u)return u;
     return findParent(parent, parent[u]);
 }
 
@@ -47,10 +48,11 @@ const calculateCost = (n, roads, m) => {
     let parent = {};
     
     for(let i = 0; i < n; i++) parent[i] = i;
-
+    
     for(let i = 0; i < roads.length; i++) {
         let u = findParent(parent, roads[i][0]);
         let v = findParent(parent, roads[i][1]);
+        console.log({u, v})
 
         if(m[u] && m[v]) {
             cost += roads[i][2];
@@ -66,6 +68,8 @@ const calculateCost = (n, roads, m) => {
 
 function minTime(roads, machines) {
     // Write your code here
+    console.log({roads, machines})
+    let n = roads.length;
 
     let m = {};
 
@@ -76,7 +80,9 @@ function minTime(roads, machines) {
     for(let i = 0; i < machines.length; i++) {
         m[machines[i]] = true;
     }
+    
     roads = roads.sort((a, b) => b[2] - a[2])
+    
 
     return calculateCost(n, roads, m)
 }
