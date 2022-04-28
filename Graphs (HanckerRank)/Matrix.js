@@ -32,7 +32,6 @@ function readLine() {
  */
 
 const findParent = (parent, u) => {
-    console.log({parent, u})
     if(parent[u] == u)return u;
     return findParent(parent, parent[u]);
 }
@@ -52,7 +51,6 @@ const calculateCost = (n, roads, m) => {
     for(let i = 0; i < roads.length; i++) {
         let u = findParent(parent, roads[i][0]);
         let v = findParent(parent, roads[i][1]);
-        console.log({u, v})
 
         if(m[u] && m[v]) {
             cost += roads[i][2];
@@ -68,8 +66,7 @@ const calculateCost = (n, roads, m) => {
 
 function minTime(roads, machines) {
     // Write your code here
-    console.log({roads, machines})
-    let n = roads.length;
+    let n = roads.length+1;
 
     let m = {};
 
