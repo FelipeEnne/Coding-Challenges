@@ -25,8 +25,16 @@ function main() {
   const numbers = inputLines[1].split(" ").map((e) => parseInt(e));
 
   let result = 0;
+  let tree = {};
 
   for (let i = 0; i < numberOfInputs; i++) {
+    tree[numbers[i]] = {
+      rigth: 0,
+      left: 0,
+      height: result,
+    };
+    if (result == 0) result++;
+
     console.log(numbers[i]);
   }
 
