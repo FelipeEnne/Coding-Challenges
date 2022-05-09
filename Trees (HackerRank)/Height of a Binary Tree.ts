@@ -61,5 +61,12 @@ function main() {
   const numberOfInputs = parseInt(inputLines[0]);
   const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
 
-  console.log({ numberOfInputs, nodeValues });
+  const tree = new TreeNode();
+
+  for (let nodeValue of nodeValues) {
+    tree.insert(nodeValue);
+  }
+
+  const height = tree.getHeight();
+  console.log(height);
 }
