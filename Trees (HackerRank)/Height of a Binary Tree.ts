@@ -58,7 +58,7 @@ class TreeNode {
 
 function main() {
   // Enter your code here
-  const numberOfInputs = parseInt(inputLines[0]);
+  // const numberOfInputs = parseInt(inputLines[0]);
   const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
 
   const tree = new TreeNode();
