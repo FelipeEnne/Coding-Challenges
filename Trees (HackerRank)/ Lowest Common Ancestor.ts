@@ -19,6 +19,54 @@ function readLine(): string {
   return inputLines[currentLine++];
 }
 
+class TreeNode {
+  private left: any;
+  private right: any;
+  private data: any;
+
+  constructor(value?: any) {
+    this.data = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(newData: any) {
+    let node = this;
+    if (!node.data) {
+      node.data = newData;
+    } else if (node.left && newData < node.data) {
+      node.left.insert(newData);
+    } else if (newData < node.data && !node.left) {
+      const newNode = new TreeNode(newData);
+      node.left = newNode;
+    } else if (node.right && newData > node.data) {
+      node.right.insert(newData);
+    } else if (newData > node.data && !node.right) {
+      const newNode = new TreeNode(newData);
+      node.right = newNode;
+    }
+  }
+
+  getHeight(node: any = this): any {
+    if (!node) return -1;
+    const left = this.getHeight(node.left);
+
+    const right = this.getHeight(node.right);
+    return Math.max(left, right) + 1;
+  }
+}
+
+const findDecendent
+
+
 function main() {
-  // Enter your code here
+  const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
+
+  const tree = new TreeNode();
+
+  for (let nodeValue of nodeValues) {
+    tree.insert(nodeValue);
+  }
+
+  console.log(tree);
 }
