@@ -56,11 +56,21 @@ class TreeNode {
   }
 }
 
-const findDecendent
+const findDecendent = (tree: any, v1: any, v2: any): any => {s
+  if (tree.data < v1 && tree.data < v2) {
+    return findDecendent(tree.right, v1, v2);
+  }
 
+  if (tree.data > v1 && tree.data > v2) {
+    return findDecendent(tree.left, v1, v2);
+  }
+
+  return tree;
+};
 
 function main() {
   const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
+  const nodeValuesDecendent = inputLines[2].split(" ").map((e) => parseInt(e));
 
   const tree = new TreeNode();
 
@@ -68,5 +78,7 @@ function main() {
     tree.insert(nodeValue);
   }
 
-  console.log(tree);
+  console.log(
+    findDecendent(tree, nodeValuesDecendent[0], nodeValuesDecendent[1]).data
+  );
 }
