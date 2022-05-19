@@ -1,24 +1,3 @@
-"use strict";
-
-process.stdin.resume();
-process.stdin.setEncoding("utf-8");
-let inputString: string = "";
-let inputLines: string[] = [];
-let currentLine: number = 0;
-process.stdin.on("data", function (inputStdin: string): void {
-  inputString += inputStdin;
-});
-
-process.stdin.on("end", function (): void {
-  inputLines = inputString.split("\n");
-  inputString = "";
-  main();
-});
-
-function readLine(): string {
-  return inputLines[currentLine++];
-}
-
 class TreeNode {
   private left: any;
   private right: any;
@@ -57,16 +36,29 @@ class TreeNode {
 }
 
 function main() {
-  // Enter your code here
-  // const numberOfInputs = parseInt(inputLines[0]);
-  const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
+ const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
 
   const tree = new TreeNode();
 
   for (let nodeValue of nodeValues) {
     tree.insert(nodeValue);
   }
-
-  const height = tree.getHeight();
-  console.log(height);
+    
+  console.log(tree);
 }
+
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+let inputString: string = "";
+let inputLines: string[] = [];
+let currentLine: number = 0;
+process.stdin.on("data", function (inputStdin: string): void {
+  inputString += inputStdin;
+});
+
+
+process.stdin.on("end", function (): void {
+  inputLines = inputString.split("\n");
+  inputString = "";
+  main();
+});
