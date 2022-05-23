@@ -1,14 +1,29 @@
+"use strict";
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+let inputString: string = "";
+let inputLines: string[] = [];
+let currentLine: number = 0;
+process.stdin.on("data", function (inputStdin: string): void {
+  inputString += inputStdin;
+});
+process.stdin.on("end", function (): void {
+  inputLines = inputString.split("\n");
+  inputString = "";
+  main();
+});
+function readLine(): string {
+  return inputLines[currentLine++];
+}
 class TreeNode {
   private left: any;
   private right: any;
   private data: any;
-
   constructor(value?: any) {
     this.data = value;
     this.left = null;
     this.right = null;
   }
-
   insert(newData: any) {
     let node = this;
     if (!node.data) {
@@ -25,35 +40,38 @@ class TreeNode {
       node.right = newNode;
     }
   }
-
   getHeight(node: any = this): any {
     if (!node) return -1;
     const left = this.getHeight(node.left);
-
     const right = this.getHeight(node.right);
     return Math.max(left, right) + 1;
   }
 }
 
-function processData(input: any) {
-  const nodeValues = input[0]//.split("\n")//.map((e) => parseInt(e));
+const findDecendent = (tree: any, v1: any, v2: any): any => {
+  s;
+  if (tree.data < v1 && tree.data < v2) {
+    return findDecendent(tree.right, v1, v2);
+  }
 
-  //   const tree = new TreeNode();
+  if (tree.data > v1 && tree.data > v2) {
+    return findDecendent(tree.left, v1, v2);
+  }
 
-  //   for (let nodeValue of nodeValues) {
-  //     tree.insert(nodeValue);
-  //   }
-  console.log(input);
-  console.log(nodeValues);
+  return tree;
+};
+
+function main() {
+  const nodeValues = inputLines[1].split(" ").map((e) => parseInt(e));
+  const nodeValuesDecendent = inputLines[2].split(" ").map((e) => parseInt(e));
+
+  const tree = new TreeNode();
+
+  for (let nodeValue of nodeValues) {
+    tree.insert(nodeValue);
+  }
+
+  console.log(
+    findDecendent(tree, nodeValuesDecendent[0], nodeValuesDecendent[1]).data
+  );
 }
-
-process.stdin.resume();
-process.stdin.setEncoding("ascii");
-let _input = "";
-process.stdin.on("data", function (input) {
-  _input += input;
-});
-
-process.stdin.on("end", function () {
-  processData(_input);
-});

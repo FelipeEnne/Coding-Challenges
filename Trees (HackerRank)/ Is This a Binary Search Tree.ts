@@ -25,34 +25,56 @@ class TreeNode {
       node.right = newNode;
     }
   }
-
-  getHeight(node: any = this): any {
-    if (!node) return -1;
-    const left = this.getHeight(node.left);
-
-    const right = this.getHeight(node.right);
-    return Math.max(left, right) + 1;
-  }
 }
 
-function processData(input: any) {
-  //   const nodeValues = input[1].split(" ").map((e) => parseInt(e));
+function checkBST(root: any): boolean {
+  return check(root, -10000, 100000);
+}
 
-  //   const tree = new TreeNode();
+function check(n: any, min: any, max: any): boolean {
+  if (n == null) return true;
+  if (n.data <= min || n.data >= max) return false;
 
-  //   for (let nodeValue of nodeValues) {
-  //     tree.insert(nodeValue);
-  //   }
-  console.log(input);
+  return check(n.left, min, n.data) && check(n.right, n.data, max);
+}
+
+function main() {
+  const nodeValues = inputLines[1].split(" ").map((e: any) => parseInt(e));
+
+  const tree = new TreeNode();
+
+  const nodeLenght = nodeValues.length;
+  let i = 0;
+  while(nodeLenght > i) {
+    if(i == 0) {
+        tree.insert(nodeValues[Math.round(nodeLenght/2)-1])
+        console.log(nodeValues[Math.round(nodeLenght/2)-1])
+        i++;
+    }else{
+        tree.insert(nodeValues[Math.round(nodeLenght/2)-1-i]);
+        console.log(nodeValues[Math.round(nodeLenght/2)-1-i])
+
+        tree.insert(nodeValues[Math.round(nodeLenght/2)-1+i]);
+        console.log(nodeValues[Math.round(nodeLenght/2)-1+i]);
+        
+        i += 1
+    }
+  }
+
+  console.log(checkBST(tree) ? "Yes" : "No");
 }
 
 process.stdin.resume();
-process.stdin.setEncoding("ascii");
-let _input = "";
-process.stdin.on("data", function (input) {
-  _input += input;
+process.stdin.setEncoding("utf-8");
+let inputString: string = "";
+let inputLines: string[] = [];
+let currentLine: number = 0;
+process.stdin.on("data", function (inputStdin: string): void {
+  inputString += inputStdin;
 });
 
-process.stdin.on("end", function () {
-  processData(_input);
+process.stdin.on("end", function (): void {
+  inputLines = inputString.split("\n");
+  inputString = "";
+  main();
 });
