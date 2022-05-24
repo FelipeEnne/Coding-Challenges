@@ -38,27 +38,19 @@ function check(n: any, min: any, max: any): boolean {
   return check(n.left, min, n.data) && check(n.right, n.data, max);
 }
 
+function sortValues(arr: any): any {
+  if (arr.length > 0) {
+
+  }
+}
+
 function main() {
   const nodeValues = inputLines[1].split(" ").map((e: any) => parseInt(e));
 
   const tree = new TreeNode();
 
-  const nodeLenght = nodeValues.length;
-  let i = 0;
-  while(nodeLenght > i) {
-    if(i == 0) {
-        tree.insert(nodeValues[Math.round(nodeLenght/2)-1])
-        console.log(nodeValues[Math.round(nodeLenght/2)-1])
-        i++;
-    }else{
-        tree.insert(nodeValues[Math.round(nodeLenght/2)-1-i]);
-        console.log(nodeValues[Math.round(nodeLenght/2)-1-i])
-
-        tree.insert(nodeValues[Math.round(nodeLenght/2)-1+i]);
-        console.log(nodeValues[Math.round(nodeLenght/2)-1+i]);
-        
-        i += 1
-    }
+  for (let nodeValue of nodeValues) {
+    tree.insert(nodeValue);
   }
 
   console.log(checkBST(tree) ? "Yes" : "No");
