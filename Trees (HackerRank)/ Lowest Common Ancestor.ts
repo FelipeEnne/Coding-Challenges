@@ -49,7 +49,7 @@ class TreeNode {
 }
 
 const findDecendent = (tree: any, v1: any, v2: any): any => {
-  s;
+
   if (tree.data < v1 && tree.data < v2) {
     return findDecendent(tree.right, v1, v2);
   }
