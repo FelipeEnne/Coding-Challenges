@@ -52,31 +52,31 @@ class TreeNode {
   }
 }
 
-void decode(String S , Node root) {
-  decode(S, root, root);
-}
+// void decode(String S , Node root) {
+//   decode(S, root, root);
+// }
 
-void decode(String S, Node mainRoot, Node currRoot) {
+// void decode(String S, Node mainRoot, Node currRoot) {
 
-if (mainRoot != null && S != null) {
-  if (isLeaf(currRoot)) {
-    System.out.print(currRoot.data);
-    decode(S, mainRoot, mainRoot);
-  } else if (S.length() > 0) {
-    switch (S.charAt(0)) {
-      case '0': decode(S.substring(1), mainRoot, currRoot.left);
-      break;
-      case '1': decode(S.substring(1), mainRoot, currRoot.right);
-      break;
-      default : System.out.println("Fatal error.");
-                System.exit(-1);
-    }
-  }
-}}
+// if (mainRoot != null && S != null) {
+//   if (isLeaf(currRoot)) {
+//     System.out.print(currRoot.data);
+//     decode(S, mainRoot, mainRoot);
+//   } else if (S.length() > 0) {
+//     switch (S.charAt(0)) {
+//       case '0': decode(S.substring(1), mainRoot, currRoot.left);
+//       break;
+//       case '1': decode(S.substring(1), mainRoot, currRoot.right);
+//       break;
+//       default : System.out.println("Fatal error.");
+//                 System.exit(-1);
+//     }
+//   }
+// }}
 
-boolean isLeaf(Node n) {
-  return n != null && n.left == null && n.right == null;
-}
+// boolean isLeaf(Node n) {
+//   return n != null && n.left == null && n.right == null;
+// }
 
 function main() {
   console.log(inputLines[0]);
