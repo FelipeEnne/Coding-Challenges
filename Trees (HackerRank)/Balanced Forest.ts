@@ -34,6 +34,10 @@ function readLine(): string {
 
 function balancedForest(c: number[], edges: number[][]): number {
   // Write your code here
+
+  console.log({ c, edges });
+
+  return 1;
 }
 
 function main() {
