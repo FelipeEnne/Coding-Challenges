@@ -76,7 +76,9 @@ function printSinglyLinkedList(node, sep, ws) {
 // This is a "method-only" submission.
 // You only need to complete this method.
 
-function findMergeNode(headA, headB) {}
+function findMergeNode(headA, headB) {
+  console.log(headA, headB);
+}
 
 function main() {
   const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
