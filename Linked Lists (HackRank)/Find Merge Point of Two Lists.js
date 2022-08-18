@@ -77,7 +77,14 @@ function printSinglyLinkedList(node, sep, ws) {
 // You only need to complete this method.
 
 function findMergeNode(headA, headB) {
-  console.log(headA, headB);
+  let a = headA;
+  let b = headB;
+
+  while (a != b) {
+    a = a.next ? a.next : headB;
+    b = b.next ? b.next : headA;
+  }
+  return a.data;
 }
 
 function main() {
