@@ -31,6 +31,7 @@ function readLine() {
 
 function stepPerms(n) {
   // Write your code here
+  console.log(n);
 }
 
 function main() {
