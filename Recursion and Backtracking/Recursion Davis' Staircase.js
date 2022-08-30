@@ -30,9 +30,11 @@ function readLine() {
  */
 const pre = [0, 1, 2, 4];
 function stepPerms(n) {
-  for (let i = pre.length; i <= n; i++) {
-    pre.push(pre[i - 1] + pre[i - 2] + pre[i - 3]);
+  //console.log(n, !(n in pre));
+  if (!(n in pre)) {
+    pre[n] = stepPerms(n - 1) + stepPerms(n - 2) + stepPerms(n - 3);
   }
+  //console.log({ n, pren: pre[n], pre });
   return pre[n];
 }
 
