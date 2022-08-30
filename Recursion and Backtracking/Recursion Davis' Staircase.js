@@ -28,10 +28,12 @@ function readLine() {
  * The function is expected to return an INTEGER.
  * The function accepts INTEGER n as parameter.
  */
-
+const pre = [0, 1, 2, 4];
 function stepPerms(n) {
-  // Write your code here
-  console.log(n);
+  for (let i = pre.length; i <= n; i++) {
+    pre.push(pre[i - 1] + pre[i - 2] + pre[i - 3]);
+  }
+  return pre[n];
 }
 
 function main() {
