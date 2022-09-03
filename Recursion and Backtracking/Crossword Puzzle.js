@@ -31,10 +31,51 @@ function readLine() {
  *  2. STRING words
  */
 
-function crosswordPuzzle(crossword, words) {
-  hints = words.split(";");
+function crosswordPuzzle(crossword, hints) {
+  const blankWords = findBlankWords(crossword);
+  console.log(blankWords);
+}
 
-  let options = [crossword];
+const getKey = (i, j) => `${i}_${j}`;
+
+function findBlankWords(crossword) {
+  const words = [];
+  const visited = {};
+  for (let i = 0; i < crossword.length; i++) {
+    const row = crossword[i];
+    for (let j = 0; j < row.length; j++) {
+      const char = row[j];
+      const key = getKey(i, j);
+      if (char !== "-") continue;
+      // DOWN
+      if (
+        crossword[i + 1] &&
+        crossword[i + 1][j] === "-" &&
+        !visited["DOWN_" + key]
+      ) {
+        const word = [];
+        for (let c = i; c < crossword.length; c++) {
+          if (crossword[c][j] !== "-") break;
+          const cKey = getKey(c, j);
+          visited["DOWN_" + cKey] = true;
+          word.push(cKey);
+        }
+        words.push(word);
+      }
+      // RIGHT
+      if (row[j + 1] === "-" && !visited["RIGHT_" + key]) {
+        const word = [];
+        for (let c = j; c < row.length; c++) {
+          if (row[c] !== "-") break;
+          const cKey = getKey(i, c);
+          visited["RIGHT_" + cKey] = true;
+          word.push(cKey);
+        }
+        words.push(word);
+      }
+    }
+  }
+  return words;
 }
 
 function main() {
