@@ -78,6 +78,36 @@ function findBlankWords(crossword) {
   return words;
 }
 
+function solvePuzzle(crossword, blankWords, words) {
+  const mapLetters = {};
+  for (let i = 0; i < words.length; i++) {
+    const letters = words[i].split("");
+    const blankWord = blankWords[i];
+    if (letters.length !== blankWord.length) return null;
+    for (let j = 0; j < letters.length; j++) {
+      const letter = letters[j];
+      const key = blankWord[j];
+      if (!mapLetters[key]) {
+        mapLetters[key] = letter;
+        continue;
+      }
+      if (mapLetters[key] !== letter) return null;
+    }
+  }
+  const solved = [];
+  for (let i = 0; i < crossword.length; i++) {
+    solved[i] = crossword[i].split("");
+    for (let j = 0; j < crossword[i].length; j++) {
+      const key = getKey(i, j);
+      if (mapLetters[key]) {
+        solved[i][j] = mapLetters[key];
+      }
+    }
+    solved[i] = solved[i].join("");
+  }
+  return solved;
+}
+
 function main() {
   const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
