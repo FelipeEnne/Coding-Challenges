@@ -33,7 +33,14 @@ function readLine() {
 
 function crosswordPuzzle(crossword, hints) {
   const blankWords = findBlankWords(crossword);
-  console.log(blankWords);
+  const combinations = getArrayMutations(hints.split(";"));
+
+  for (let i = 0; i < combinations.length; i++) {
+    const combination = combinations[i];
+    const result = solvePuzzle(crossword, blankWords, combination);
+    if (result) return result;
+  }
+  return [];
 }
 
 const getKey = (i, j) => `${i}_${j}`;
@@ -106,6 +113,21 @@ function solvePuzzle(crossword, blankWords, words) {
     solved[i] = solved[i].join("");
   }
   return solved;
+}
+
+// https://stackoverflow.com/a/60136724/1532821
+function getArrayMutations(arr, perms = [], len = arr.length) {
+  if (len === 1) perms.push(arr.slice(0));
+
+  for (let i = 0; i < len; i++) {
+    getArrayMutations(arr, perms, len - 1);
+
+    len % 2 // parity dependent adjacent elements swap
+      ? ([arr[0], arr[len - 1]] = [arr[len - 1], arr[0]])
+      : ([arr[i], arr[len - 1]] = [arr[len - 1], arr[i]]);
+  }
+
+  return perms;
 }
 
 function main() {
