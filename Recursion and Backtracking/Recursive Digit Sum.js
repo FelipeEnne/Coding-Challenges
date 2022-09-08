@@ -33,7 +33,27 @@ function readLine() {
 
 function superDigit(n, k) {
   // Write your code here
-  console.log(n, k);
+  let number = n.toString();
+
+  let first = true;
+  let resp = 0;
+  const getSuperDigit = (number) => {
+    let sum = number.split("").reduce((acc, cur) => {
+      return acc + parseInt(cur);
+    }, 0);
+
+    if (first) {
+      sum = sum * k;
+      first = false;
+    }
+
+    const sumToSring = sum.toString();
+    if (sumToSring.length != 1) getSuperDigit(sumToSring);
+    else resp = sum;
+  };
+
+  getSuperDigit(number);
+  return resp;
 }
 
 function main() {
