@@ -31,6 +31,15 @@ function readLine() {
 
 function flippingBits(n) {
   // Write your code here
+  let toBinary = Number(n).toString(2);
+
+  const addZeros = 32 - toBinary.length;
+  if (addZeros > 0) {
+    const zeros = "0".repeat(addZeros);
+    toBinary = zeros + toBinary;
+  }
+
+  console.log(toBinary);
 }
 
 function main() {
