@@ -39,7 +39,12 @@ function flippingBits(n) {
     toBinary = zeros + toBinary;
   }
 
-  console.log(toBinary);
+  let invertBinary = "";
+  for (const number of toBinary) {
+    invertBinary += number == "0" ? "1" : "0";
+  }
+
+  return parseInt(invertBinary, 2);
 }
 
 function main() {
