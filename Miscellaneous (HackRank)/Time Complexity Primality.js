@@ -30,7 +30,7 @@ function readLine() {
  */
 
 function primality(n) {
-  // Write your code here
+  console.log(n);
 }
 
 function main() {
