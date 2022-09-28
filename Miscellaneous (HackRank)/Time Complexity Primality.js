@@ -30,7 +30,18 @@ function readLine() {
  */
 
 function primality(n) {
-  console.log(n);
+  if ((n == 1) | (n % 2 == 0) && n != 2) {
+    return "Not prime";
+  }
+
+  for (var i = 3; i <= Math.sqrt(n); i += 2) {
+    console.log(i);
+    if (n % i == 0) {
+      return "Not prime";
+    }
+  }
+
+  return "Prime";
 }
 
 function main() {
