@@ -26,7 +26,9 @@ function readLine() {
 }
 
 // Complete the maxCircle function below.
-function maxCircle(queries) {}
+function maxCircle(queries) {
+  console.log(queries);
+}
 
 function main() {
   const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
