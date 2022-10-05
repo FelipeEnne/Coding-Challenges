@@ -27,20 +27,25 @@ function readLine() {
 
 // Complete the maxCircle function below.
 function maxCircle(queries) {
-  let resp = [2];
-  let arr = queries[0];
+  var people = {},
+    currentNumberOfPeopleMadeFriends = [],
+    maxNumberOfPeopleInAGroup = 0;
 
-  for (let x = 1; queries.length > x; x++) {
-    if (arr.indexOf(queries[x][0]) > -1) {
-      arr.push(queries[x][1]);
-    } else if (arr.indexOf(queries[x][1]) > -1) {
-      arr.push(queries[x][0]);
-    } else {
-      arr.push(queries[x]);
+  for (var i = 0; i < queries.length; i += 1) {
+    let person1 = queries[i][0];
+    let person2 = queries[i][1];
+    if (people[person1]) {
+      if (people[person2]) {
+        if (people[person2] !== people[person1]) {
+          //copyFirends(people, person1, person2);
+        }
+      } else {
+        people[person2] = people[person1];
+        people[person2].push(person2);
+      }
     }
+    return currentNumberOfPeopleMadeFriends;
   }
-  console.log(arr);
-  return arr[0];
 }
 
 function main() {
