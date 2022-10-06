@@ -25,6 +25,25 @@ function readLine() {
   return inputString[currentLine++];
 }
 
+function copyFirends(people, person1, person2) {
+  //we just want to copy the element that has less (little optimization)
+  let firendshipWithMorePeople,
+      friendshipWithLessPeople;
+  if(people[person1].length > people[person2].length) {
+      firendshipWithMorePeople = people[person1];
+      friendshipWithLessPeople = people[person2];
+  } else {
+      firendshipWithMorePeople = people[person2];
+      friendshipWithLessPeople = people[person1];
+  }
+  //copy all the elements from one array to the other
+  Array.prototype.push.apply(firendshipWithMorePeople, friendshipWithLessPeople);\
+  //copy the long array instance to all the other elements
+  for(let i = 0; i < friendshipWithLessPeople.length; i += 1) {
+      people[friendshipWithLessPeople[i]] = firendshipWithMorePeople;
+  }
+}
+
 // Complete the maxCircle function below.
 function maxCircle(queries) {
   var people = {},
