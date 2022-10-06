@@ -26,21 +26,21 @@ function readLine() {
 }
 
 function copyFirends(people, person1, person2) {
-  //we just want to copy the element that has less (little optimization)
-  let firendshipWithMorePeople,
-      friendshipWithLessPeople;
-  if(people[person1].length > people[person2].length) {
-      firendshipWithMorePeople = people[person1];
-      friendshipWithLessPeople = people[person2];
+  let firendshipWithMorePeople, friendshipWithLessPeople;
+  if (people[person1].length > people[person2].length) {
+    firendshipWithMorePeople = people[person1];
+    friendshipWithLessPeople = people[person2];
   } else {
-      firendshipWithMorePeople = people[person2];
-      friendshipWithLessPeople = people[person1];
+    firendshipWithMorePeople = people[person2];
+    friendshipWithLessPeople = people[person1];
   }
-  //copy all the elements from one array to the other
-  Array.prototype.push.apply(firendshipWithMorePeople, friendshipWithLessPeople);\
-  //copy the long array instance to all the other elements
-  for(let i = 0; i < friendshipWithLessPeople.length; i += 1) {
-      people[friendshipWithLessPeople[i]] = firendshipWithMorePeople;
+
+  Array.prototype.push.apply(
+    firendshipWithMorePeople,
+    friendshipWithLessPeople
+  );
+  for (let i = 0; i < friendshipWithLessPeople.length; i += 1) {
+    people[friendshipWithLessPeople[i]] = firendshipWithMorePeople;
   }
 }
 
@@ -56,7 +56,7 @@ function maxCircle(queries) {
     if (people[person1]) {
       if (people[person2]) {
         if (people[person2] !== people[person1]) {
-          //copyFirends(people, person1, person2);
+          copyFirends(people, person1, person2);
         }
       } else {
         people[person2] = people[person1];
