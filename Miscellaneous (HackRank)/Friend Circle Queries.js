@@ -62,9 +62,21 @@ function maxCircle(queries) {
         people[person2] = people[person1];
         people[person2].push(person2);
       }
+    } else {
+      if (people[person2]) {
+        people[person1] = people[person2];
+        people[person1].push(person1);
+      } else {
+        people[person1] = people[person2] = [person1, person2];
+      }
     }
-    return currentNumberOfPeopleMadeFriends;
+    maxNumberOfPeopleInAGroup = Math.max(
+      people[person1].length,
+      maxNumberOfPeopleInAGroup
+    );
+    currentNumberOfPeopleMadeFriends.push(maxNumberOfPeopleInAGroup);
   }
+  return currentNumberOfPeopleMadeFriends;
 }
 
 function main() {
