@@ -27,7 +27,8 @@ function readLine() {
 
 // Complete the maxXor function below.
 function maxXor(arr, queries) {
-  // solve here
+  let res = [];
+  let max = 0;
 }
 
 function main() {
