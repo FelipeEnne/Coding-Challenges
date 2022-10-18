@@ -27,8 +27,21 @@ function readLine() {
 
 // Complete the maxXor function below.
 function maxXor(arr, queries) {
+  // solve here
   let res = [];
   let max = 0;
+  for (let i = 0; i < queries.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      let Xor = queries[i] ^ arr[j];
+      //console.log(queries[i], arr[j], queries[i]^arr[j])
+      if (Xor > max) {
+        max = Xor;
+      }
+    }
+    res.push(max);
+    max = 0;
+  }
+  return res;
 }
 
 function main() {
