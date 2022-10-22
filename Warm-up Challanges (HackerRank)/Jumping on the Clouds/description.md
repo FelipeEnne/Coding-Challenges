@@ -56,3 +56,7 @@ The player must avoid c[2] and c[5]. The game can be won with a minimum of 4 jum
 > 3
 
 The only thundercloud to avoid is c[4]. The game can be won in 3 jumps.
+
+## Resolution
+
+Loop check if I can skip 2 if I can't I skip 1, always checking if it hasn't reached the end (greedy solution)
