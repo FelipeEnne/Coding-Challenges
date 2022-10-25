@@ -59,3 +59,7 @@ The first n=10 letters of the infinite string are abaabaabaa. Because there are 
 ### Sample Explanation 1
 
 Because all of the first n=1000000000000 letters of the infinite string are a, we return 1000000000000.
+
+## Resolution
+
+I calculate how many A's there are in the word a, divide that by the amount and what's left I check one by one.
