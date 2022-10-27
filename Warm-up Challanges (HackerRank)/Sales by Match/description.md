@@ -43,3 +43,7 @@ The second line contains n space-separated integers, ar[i], the colors of the so
 > 3
 
 There are three pairs of socks.
+
+## Resolution
+
+Create a map and a loop through the array that generates a key 1 at the beginning and when it finds the same key removes and adds the result.
