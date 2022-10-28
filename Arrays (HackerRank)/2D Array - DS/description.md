@@ -43,3 +43,7 @@ The second line contains n space-separated integers, each an a[i].
 When we perform d=4 left rotations, the array undergoes the following sequence of changes:
 
 [1,2,3,4,5] -> [2,3,4,5,1] -> [3,4,5,1,2] -> [4,5,1,2,3] -> [5,1,2,3,4]
+
+## Resolution
+
+Loop inside loop and looking for the biggest hourglasses and putting in the result (always checking the limits).
