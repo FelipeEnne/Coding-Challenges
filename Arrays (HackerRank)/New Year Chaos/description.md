@@ -68,3 +68,7 @@ So the final state is  after three bribing operations.
 Test Case 2
 
 No person can bribe more than two people, so its not possible to achieve the input state.
+
+## Resolution
+
+Loop backwards and checking the difference with the index, because the index is ordered, if there is a maximum of 2 difference, add the result if there is more, it returns "Too chaotic"
