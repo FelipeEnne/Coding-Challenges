@@ -62,3 +62,4 @@ Explanation 2
 ## Resolution
 
 Greedy solution, for in the array comparing with index and swapping with the right index, counting when this happens (using a variable temp and while)
+
