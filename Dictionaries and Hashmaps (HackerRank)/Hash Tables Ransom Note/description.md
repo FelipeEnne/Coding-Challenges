@@ -71,3 +71,8 @@ The third line contains n space-separated strings, each note[i].
 ### Explanation 1
 
 Harold's magazine is missing the word some.
+
+
+## Resolution
+
+It reduces a part into an object, where the keys is the word and the value is the word count, then passes through the other array to see if it has all the words.
