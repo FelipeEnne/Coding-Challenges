@@ -64,3 +64,7 @@ We have p=2 pairs to check:
 
 1. s1="hello", s2="world". The substrings "o" and "l" are common to both strings.
 2. a="hi, b="word". s1 and s2 share no common substrings.
+
+## Resolution
+
+It reduces a part into an object, where the keys is the word and the value is the word count, then passes through the other array to see match two strings.
