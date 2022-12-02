@@ -51,3 +51,4 @@ No anagrammatic pairs exist in the second query as no character repeats.
 
 ## Resolution
 
+Looping the word in "i" and cutting and sorting a piece "j"
