@@ -11,23 +11,23 @@
  * @param {number} k
  * @return {number}
  */
-var kthSmallest = function(root, k) {
-    const sortedArray = [];
-    
-    if (root === null) {
-        return sortedArray;
+var kthSmallest = function (root, k) {
+  const sortedArray = [];
+
+  if (root === null) {
+    return sortedArray;
+  }
+
+  const inorder = (node, arr) => {
+    if (node == null) {
+      return;
     }
-    
-    const inorder = (node, arr) => {
-        if (node == null) {
-            return;
-        }
-        
-        inorder (node.left, arr);
-        arr.push (node.val);
-        inorder (node.right, arr);
-    }
-    inorder (root, sortedArray);
-    
-    return sortedArray[k - 1]
+
+    inorder(node.left, arr);
+    arr.push(node.val);
+    inorder(node.right, arr);
+  };
+  inorder(root, sortedArray);
+
+  return sortedArray[k - 1];
 };
