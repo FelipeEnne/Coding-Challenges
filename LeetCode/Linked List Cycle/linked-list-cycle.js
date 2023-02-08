@@ -10,28 +10,26 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head,pos) {
-
-    while(head) {
-        if(head.val == "check"){
-            return true;
-        }
-        head.val = "check";
-        head = head.next;
+var hasCycle = function (head, pos) {
+  while (head) {
+    if (head.val == "check") {
+      return true;
     }
-    return false
+    head.val = "check";
+    head = head.next;
+  }
+  return false;
 };
 
+var hasCycleO = function (head, pos) {
+  let mySet = new Set();
 
-var hasCycleO = function(head,pos) {
-    let mySet = new Set();
-    
-    while(head) {
-        if(mySet.has(head)){
-            return true;
-        }
-        mySet.add(head);
-        head = head.next;
+  while (head) {
+    if (mySet.has(head)) {
+      return true;
     }
-    return false
+    mySet.add(head);
+    head = head.next;
+  }
+  return false;
 };
