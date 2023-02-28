@@ -18,10 +18,8 @@ var maxSubArray1 = function (nums) {
       if (adding > result) {
         result = adding;
       }
-      //console.log(adding)
       j++;
     }
-    //console.log(result)
   }
   return result;
 };
